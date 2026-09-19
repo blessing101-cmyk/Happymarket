@@ -13,15 +13,15 @@
    Palette: iOS system colors, translucency, continuous corners
 ============================================================ */
 :root{
-  --sys-blue:#0A84FF;
-  --sys-blue-deep:#0060DF;
-  --sys-purple:#5E5CE6;
-  --sys-teal:#40C8C0;
-  --sys-pink:#FF375F;
-  --sys-orange:#FF9F0A;
-  --sys-green:#30D158;
-  --sys-yellow:#FFD60A;
-  --sys-indigo:#5856D6;
+  --sys-blue:#52606D;
+  --sys-blue-deep:#3E4952;
+  --sys-purple:#5C5470;
+  --sys-teal:#5B7570;
+  --sys-pink:#9C6B52;
+  --sys-orange:#A9834B;
+  --sys-green:#6E7C6A;
+  --sys-yellow:#C9A227;
+  --sys-indigo:#5C5470;
 
   --bg:#F2F2F7;
   --bg-elevated:#FFFFFF;
@@ -36,7 +36,7 @@
   --shadow:0 10px 34px -14px rgba(30,30,45,0.18);
   --shadow-sm:0 2px 10px -4px rgba(30,30,45,0.12);
   --r-s:12px; --r-m:18px; --r-l:26px; --r-xl:32px;
-  --accent-grad: linear-gradient(135deg, var(--sys-blue), var(--sys-purple));
+  --accent-grad: linear-gradient(135deg, #A9834B, #8A6D3D);
 }
 :root[data-theme="dark"], @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --bg:#000000;
@@ -94,7 +94,7 @@ header{
   width:34px; height:34px; border-radius:10px;
   background:var(--accent-grad);
   display:flex; align-items:center; justify-content:center;
-  font-size:16px; flex-shrink:0; box-shadow:0 4px 12px -3px rgba(94,92,230,0.55);
+  font-size:16px; flex-shrink:0; box-shadow:0 4px 12px -3px rgba(138,109,61,0.55);
 }
 .brand small{display:block; font-size:9.5px; font-weight:600; color:var(--label-2); letter-spacing:.01em; margin-top:1px;}
 .header-actions{display:flex; align-items:center; gap:8px;}
@@ -105,7 +105,7 @@ header{
 .lang-switch button.active{background:var(--bg-elevated); color:var(--label); box-shadow:var(--shadow-sm);}
 .pill-btn{
   padding:9px 17px; border-radius:980px; font-weight:700; font-size:13.5px;
-  background:var(--sys-blue); color:#fff; white-space:nowrap; box-shadow:0 6px 16px -6px rgba(10,132,255,0.55);
+  background:var(--sys-blue); color:#fff; white-space:nowrap; box-shadow:0 6px 16px -6px rgba(82,96,109,0.55);
 }
 .ghost-btn{
   padding:9px 15px; border-radius:980px; font-weight:700; font-size:13.5px;
@@ -122,18 +122,16 @@ nav.top-tabs button{
 }
 nav.top-tabs button.active{background:var(--bg-elevated); color:var(--label); box-shadow:var(--shadow-sm);}
 
-/* ===== Hero — bold dark mesh, always-dark regardless of app theme ===== */
+/* ===== Hero — quiet, premium dark backdrop with a single warm gold glow ===== */
 .hero{
   padding:56px 20px 46px; position:relative; overflow:hidden;
   background:
-    radial-gradient(circle at 12% 18%, rgba(64,200,192,0.5) 0%, transparent 42%),
-    radial-gradient(circle at 88% 8%, rgba(255,159,10,0.45) 0%, transparent 40%),
-    radial-gradient(circle at 78% 85%, rgba(94,92,230,0.55) 0%, transparent 45%),
-    radial-gradient(circle at 20% 92%, rgba(10,132,255,0.4) 0%, transparent 40%),
-    linear-gradient(180deg,#07070C 0%, #0C0C14 100%);
+    radial-gradient(circle at 85% 0%, rgba(169,131,75,0.28) 0%, transparent 48%),
+    radial-gradient(circle at 8% 100%, rgba(138,109,61,0.16) 0%, transparent 42%),
+    linear-gradient(180deg,#0B0B0D 0%, #131315 100%);
 }
 .hero::before{
-  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.35; mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
 }
 .hero-inner{max-width:1180px; margin:0 auto; position:relative;}
@@ -148,7 +146,7 @@ nav.top-tabs button.active{background:var(--bg-elevated); color:var(--label); bo
 .ai-cta-row{margin-top:15px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
 .ai-cta{
   display:inline-flex; align-items:center; gap:8px; background:var(--accent-grad);
-  color:#fff; padding:11px 20px; border-radius:980px; font-weight:700; font-size:14px; box-shadow:0 10px 24px -8px rgba(94,92,230,0.5);
+  color:#fff; padding:11px 20px; border-radius:980px; font-weight:700; font-size:14px; box-shadow:0 10px 24px -8px rgba(138,109,61,0.5);
 }
 .ai-cta .spark{font-size:16px;}
 .hero-hint{font-size:12.5px; color:rgba(255,255,255,0.5); font-weight:500;}
@@ -236,8 +234,8 @@ nav.top-tabs button.active{background:var(--bg-elevated); color:var(--label); bo
 .kpi-card .lbl{font-size:11.5px; color:var(--label-2); font-weight:600;}
 .kpi-card .val{font-size:21px; font-weight:800; margin-top:4px; color:var(--label);}
 .kpi-card .delta{font-size:11px; font-weight:700; margin-top:5px; display:inline-block; padding:2px 7px; border-radius:6px;}
-.delta.up{color:var(--sys-green); background:rgba(48,209,88,0.12);}
-.delta.down{color:var(--sys-pink); background:rgba(255,55,95,0.12);}
+.delta.up{color:var(--sys-green); background:rgba(110,124,106,0.12);}
+.delta.down{color:var(--sys-pink); background:rgba(156,107,82,0.12);}
 .panel{background:var(--card); border-radius:var(--r-l); padding:20px; margin-bottom:16px; box-shadow:var(--shadow-sm);}
 .panel h3{font-size:15px; font-weight:800; margin-bottom:14px;}
 .bar-chart{display:flex; align-items:flex-end; gap:10px; height:140px;}
@@ -252,8 +250,8 @@ nav.top-tabs button.active{background:var(--bg-elevated); color:var(--label); bo
 .lead-info .d{font-size:11.5px; color:var(--label-2); font-weight:500;}
 .blur{filter:blur(5px); user-select:none;}
 .lead-tag{font-size:10px; font-weight:800; padding:4px 8px; border-radius:7px;}
-.tag-new{background:rgba(10,132,255,0.12); color:var(--sys-blue);}
-.tag-hot{background:rgba(255,55,95,0.12); color:var(--sys-pink);}
+.tag-new{background:rgba(82,96,109,0.12); color:var(--sys-blue);}
+.tag-hot{background:rgba(156,107,82,0.12); color:var(--sys-pink);}
 .unlock-btn{padding:7px 13px; border-radius:980px; background:var(--sys-blue); color:#fff; font-size:11.5px; font-weight:700; flex-shrink:0;}
 .menu-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(115px,1fr)); gap:10px;}
 .menu-item{background:var(--card); border-radius:var(--r-s); padding:15px 10px; text-align:center; font-size:11.5px; font-weight:600; box-shadow:var(--shadow-sm);}
@@ -277,7 +275,7 @@ footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8
 .bottom-nav button{flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px 0 7px; background:transparent; color:var(--label-3); font-size:10px; font-weight:600;}
 .bottom-nav button.active{color:var(--sys-blue);}
 .bottom-nav .bn-em{font-size:20px;}
-.fab{position:fixed; bottom:78px; right:18px; z-index:61; background:var(--accent-grad); color:#fff; padding:14px 20px; border-radius:980px; font-weight:700; font-size:13px; box-shadow:0 12px 28px -8px rgba(94,92,230,0.6); display:flex; align-items:center; gap:7px;}
+.fab{position:fixed; bottom:78px; right:18px; z-index:61; background:var(--accent-grad); color:#fff; padding:14px 20px; border-radius:980px; font-weight:700; font-size:13px; box-shadow:0 12px 28px -8px rgba(138,109,61,0.6); display:flex; align-items:center; gap:7px;}
 
 .view{display:none;}
 .view.active{display:block;}
@@ -306,7 +304,7 @@ footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8
   width:100%; text-align:left; margin-bottom:2px; transition:all .15s;
 }
 .bo-nav-item .ic{width:22px; text-align:center; font-size:14px;}
-.bo-nav-item.active{background:var(--accent-grad); color:#fff; box-shadow:0 6px 16px -6px rgba(94,92,230,0.6);}
+.bo-nav-item.active{background:var(--accent-grad); color:#fff; box-shadow:0 6px 16px -6px rgba(138,109,61,0.6);}
 .bo-nav-item:hover:not(.active){background:rgba(255,255,255,0.07); color:#fff;}
 .bo-main{flex:1; padding:26px 28px 60px; min-width:0;}
 .bo-topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; flex-wrap:wrap; gap:12px;}
@@ -325,10 +323,10 @@ footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8
 .bo-table td{padding:13px 14px; font-size:13px; border-top:0.5px solid var(--hairline); vertical-align:middle;}
 .bo-table tr:hover td{background:var(--fill);}
 .status-badge{font-size:10.5px; font-weight:800; padding:4px 9px; border-radius:7px; display:inline-block;}
-.st-active{background:rgba(48,209,88,0.14); color:var(--sys-green);}
-.st-pending{background:rgba(255,159,10,0.16); color:var(--sys-orange);}
-.st-suspended{background:rgba(255,55,95,0.14); color:var(--sys-pink);}
-.st-verified{background:rgba(10,132,255,0.14); color:var(--sys-blue);}
+.st-active{background:rgba(110,124,106,0.14); color:var(--sys-green);}
+.st-pending{background:rgba(169,131,75,0.16); color:var(--sys-orange);}
+.st-suspended{background:rgba(156,107,82,0.14); color:var(--sys-pink);}
+.st-verified{background:rgba(82,96,109,0.14); color:var(--sys-blue);}
 .bo-avatar{width:30px; height:30px; border-radius:9px; background:var(--fill); display:inline-flex; align-items:center; justify-content:center; font-size:14px; margin-right:8px; vertical-align:middle;}
 .bo-scroll{overflow-x:auto;}
 .settings-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-bottom:0.5px solid var(--hairline); gap:16px;}
@@ -556,11 +554,30 @@ footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8
       <div class="bo-topbar">
         <button class="icon-btn bo-mobile-toggle" onclick="boToggleSidebar(true)">☰</button>
         <h2 id="boTitle"></h2>
-        <button class="ghost-btn" onclick="go('home')" data-i18n="boExit"></button>
+        <div style="display:flex; gap:8px;">
+          <button class="ghost-btn" onclick="adminLogout()" data-i18n="logoutBtn"></button>
+          <button class="ghost-btn" onclick="go('home')" data-i18n="boExit"></button>
+        </div>
       </div>
       <div id="boContent"></div>
     </main>
   </div>
+</div>
+
+<!-- ============ ADMIN LOGIN GATE ============ -->
+<div class="view" id="view-admin-login">
+  <section class="section">
+    <div class="wrap" style="max-width:420px;">
+      <div class="section-head"><h2 data-i18n="adminLoginTitle"></h2></div>
+      <div class="ai-panel">
+        <div class="field"><label data-i18n="fldUsername"></label><input type="text" id="adminUserInput" placeholder="admin"></div>
+        <div class="field"><label data-i18n="fldPassword"></label><input type="password" id="adminPassInput" placeholder="••••••••"></div>
+        <p id="adminLoginErr" style="display:none; color:var(--sys-pink); font-size:12.5px; font-weight:700; margin-bottom:10px;" data-i18n="loginError"></p>
+        <button class="pill-btn" style="width:100%; padding:14px;" onclick="adminLogin()" data-i18n="loginBtn"></button>
+        <p style="font-size:11px; color:var(--label-2); margin-top:14px; text-align:center; font-weight:500;" data-i18n="loginHint"></p>
+      </div>
+    </div>
+  </section>
 </div>
 
 <footer>
@@ -633,10 +650,21 @@ th:{
   sellerMenuTitle:"เมนูจัดการร้าน",
   mProducts:"สินค้า/บริการ", mLeads:"Lead", mCustomers:"ลูกค้า", mAds:"โฆษณา", mWallet:"กระเป๋าเงิน", mMembership:"สมาชิก",
   boExit:"← ออกจากระบบหลังบ้าน",
+  adminLoginTitle:"เข้าสู่ระบบหลังบ้าน", fldUsername:"ชื่อผู้ใช้", fldPassword:"รหัสผ่าน",
+  loginBtn:"เข้าสู่ระบบ", loginError:"ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง", logoutBtn:"ออกจากระบบ",
+  loginHint:"เดโม: admin / happy2026 — ระบบจริงต้องต่อกับเซิร์ฟเวอร์ยืนยันตัวตนที่ปลอดภัย",
+  boAdminAccounts:"อนุมัติผู้ดูแลระบบ", colLevel:"ระดับ", colScope:"พื้นที่รับผิดชอบ",
+  approveBtn:"อนุมัติ", rejectBtn:"ปฏิเสธ", approvedToast:"อนุมัติเรียบร้อย", rejectedToast:"ปฏิเสธคำขอแล้ว",
   boDashboard:"ภาพรวม", boUsers:"ผู้ใช้งาน", boSellers:"ผู้ขาย", boLeads:"Lead", boOrders:"คำสั่งซื้อ",
   boPayments:"การเงิน/กระเป๋าเงิน", boCommission:"คอมมิชชั่น", boMembership:"แพ็กเกจสมาชิก", boAdvertising:"โฆษณา",
   boReports:"รายงาน", boSettings:"ตั้งค่าระบบ", boTranslations:"ภาษา",
   boGroupOverview:"ภาพรวม", boGroupPeople:"บุคคล", boGroupBiz:"ธุรกิจ", boGroupSystem:"ระบบ",
+  boGroupOrg:"โครงสร้างองค์กร", boHierarchy:"เครือข่ายร้านค้า",
+  lvShop:"ร้าน", lvDistrict:"เขต/อำเภอ", lvProvince:"จังหวัด", lvRegion:"ภูมิภาค", lvCountry:"ประเทศ", lvTop:"สูงสุด",
+  yourRole:"สิทธิ์ของคุณ", yourRoleDesc:"เห็นข้อมูลทุกระดับทั่วประเทศ",
+  viewingLevel:"กำลังดูระดับ", allCountry:"ทั้งประเทศ", backUp:"← กลับขึ้นระดับบน",
+  colRevenue:"รายได้", colShops:"จำนวนร้าน", colSellers:"ผู้ขาย", drillIn:"ดูรายละเอียด →",
+  shopDetailTitle:"ข้อมูลร้าน", shopManager:"ผู้จัดการร้าน", shopLeadsToday:"Lead วันนี้", shopMonthRevenue:"ยอดขายเดือนนี้",
   revenueBreakdown:"รายได้แยกตามประเภท",
   colName:"ชื่อ", colStatus:"สถานะ", colDate:"วันที่", colValue:"มูลค่า", colContact:"ติดต่อ", colCategory:"หมวดหมู่", colProvince:"จังหวัด",
   setLeadPrice:"ราคา Lead มาตรฐาน", setLeadPriceSub:"ราคาต่อ 1 Lead ทั่วไป",
@@ -693,10 +721,21 @@ en:{
   sellerMenuTitle:"Shop Management",
   mProducts:"Products/Services", mLeads:"Leads", mCustomers:"Customers", mAds:"Advertising", mWallet:"Wallet", mMembership:"Membership",
   boExit:"← Exit back office",
+  adminLoginTitle:"Back Office Login", fldUsername:"Username", fldPassword:"Password",
+  loginBtn:"Log In", loginError:"Incorrect username or password", logoutBtn:"Log Out",
+  loginHint:"Demo: admin / happy2026 — a real deployment needs a secure authentication server",
+  boAdminAccounts:"Admin Approvals", colLevel:"Level", colScope:"Responsible Area",
+  approveBtn:"Approve", rejectBtn:"Reject", approvedToast:"Approved", rejectedToast:"Request rejected",
   boDashboard:"Overview", boUsers:"Users", boSellers:"Sellers", boLeads:"Leads", boOrders:"Orders",
   boPayments:"Payments & Wallet", boCommission:"Commission", boMembership:"Membership Plans", boAdvertising:"Advertising",
   boReports:"Reports", boSettings:"System Settings", boTranslations:"Translations",
   boGroupOverview:"Overview", boGroupPeople:"People", boGroupBiz:"Business", boGroupSystem:"System",
+  boGroupOrg:"Organization", boHierarchy:"Shop Network",
+  lvShop:"Shop", lvDistrict:"District", lvProvince:"Province", lvRegion:"Region", lvCountry:"Country", lvTop:"Top",
+  yourRole:"Your Access Level", yourRoleDesc:"Sees all data nationwide, every level",
+  viewingLevel:"Viewing level", allCountry:"Entire Country", backUp:"← Back up a level",
+  colRevenue:"Revenue", colShops:"Shops", colSellers:"Sellers", drillIn:"View details →",
+  shopDetailTitle:"Shop Details", shopManager:"Shop Manager", shopLeadsToday:"Leads Today", shopMonthRevenue:"Revenue This Month",
   revenueBreakdown:"Revenue Breakdown",
   colName:"Name", colStatus:"Status", colDate:"Date", colValue:"Value", colContact:"Contact", colCategory:"Category", colProvince:"Province",
   setLeadPrice:"Standard Lead price", setLeadPriceSub:"Price per standard lead",
@@ -753,10 +792,21 @@ zh:{
   sellerMenuTitle:"店铺管理",
   mProducts:"产品/服务", mLeads:"线索", mCustomers:"客户", mAds:"广告", mWallet:"钱包", mMembership:"会员",
   boExit:"← 退出后台",
+  adminLoginTitle:"后台登录", fldUsername:"用户名", fldPassword:"密码",
+  loginBtn:"登录", loginError:"用户名或密码错误", logoutBtn:"退出登录",
+  loginHint:"演示账号：admin / happy2026 — 正式上线需要安全的后端认证服务器",
+  boAdminAccounts:"管理员审批", colLevel:"层级", colScope:"负责区域",
+  approveBtn:"批准", rejectBtn:"拒绝", approvedToast:"已批准", rejectedToast:"已拒绝该申请",
   boDashboard:"总览", boUsers:"用户", boSellers:"卖家", boLeads:"线索", boOrders:"订单",
   boPayments:"支付与钱包", boCommission:"佣金", boMembership:"会员套餐", boAdvertising:"广告",
   boReports:"报表", boSettings:"系统设置", boTranslations:"语言翻译",
   boGroupOverview:"总览", boGroupPeople:"用户管理", boGroupBiz:"业务管理", boGroupSystem:"系统",
+  boGroupOrg:"组织架构", boHierarchy:"门店网络",
+  lvShop:"门店", lvDistrict:"区/县", lvProvince:"府/省", lvRegion:"地区", lvCountry:"国家", lvTop:"最高权限",
+  yourRole:"您的权限级别", yourRoleDesc:"可查看全国各层级的所有数据",
+  viewingLevel:"当前查看层级", allCountry:"全国", backUp:"← 返回上一级",
+  colRevenue:"收入", colShops:"门店数", colSellers:"卖家", drillIn:"查看详情 →",
+  shopDetailTitle:"门店详情", shopManager:"店长", shopLeadsToday:"今日线索", shopMonthRevenue:"本月收入",
   revenueBreakdown:"收入明细",
   colName:"名称", colStatus:"状态", colDate:"日期", colValue:"金额", colContact:"联系方式", colCategory:"类别", colProvince:"地区",
   setLeadPrice:"标准线索价格", setLeadPriceSub:"每条标准线索的价格",
@@ -788,55 +838,55 @@ zh:{
 /* ===== Custom icon set (flat, layered, two-tone — replaces emoji) ===== */
 const ICONS = [
 /*0 Solar*/ `<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="19" r="9" fill="#fff"/><g stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M24 4v3.2M24 34v0M9.5 19h3.2M35.3 19h3.2M13.8 8.8l2.3 2.3M35.9 8.8l-2.3 2.3"/></g><g fill="#fff" fill-opacity=".55"><rect x="8" y="32" width="32" height="10" rx="2"/><path d="M8 34.2h32M8 39.8h32" stroke="#0009" stroke-width=".8"/><path d="M16 32v10M24 32v10M32 32v10" stroke="#0009" stroke-width=".8"/></g></svg>`,
-/*1 Battery*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="9" y="12" width="26" height="26" rx="5" fill="#fff"/><rect x="16" y="6" width="12" height="7" rx="2" fill="#fff" fill-opacity=".55"/><rect x="13" y="27" width="20" height="7" rx="1.5" fill="#0A84FF" fill-opacity=".85"/><rect x="13" y="19" width="20" height="5.5" rx="1.5" fill="#0A84FF" fill-opacity=".5"/><path d="M23 15l-5.5 8.5H23l-1.5 9.5 7-10.5h-5.5L25 15z" fill="#FFD60A"/></svg>`,
-/*2 Home*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 6L6 20v2.5h4V41h11V29h6v12h11V22.5h4V20L24 6z" fill="#fff"/><rect x="20" y="12.5" width="8" height="8" rx="1.5" fill="#fff" fill-opacity=".55"/><rect x="14" y="30" width="6" height="6" rx="1" fill="#5E5CE6" fill-opacity=".7"/></svg>`,
+/*1 Battery*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="9" y="12" width="26" height="26" rx="5" fill="#fff"/><rect x="16" y="6" width="12" height="7" rx="2" fill="#fff" fill-opacity=".55"/><rect x="13" y="27" width="20" height="7" rx="1.5" fill="#fff" fill-opacity=".85"/><rect x="13" y="19" width="20" height="5.5" rx="1.5" fill="#fff" fill-opacity=".55"/><path d="M23 15l-5.5 8.5H23l-1.5 9.5 7-10.5h-5.5L25 15z" fill="#C9A227"/></svg>`,
+/*2 Home*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 6L6 20v2.5h4V41h11V29h6v12h11V22.5h4V20L24 6z" fill="#fff"/><rect x="20" y="12.5" width="8" height="8" rx="1.5" fill="#fff" fill-opacity=".55"/><rect x="14" y="30" width="6" height="6" rx="1" fill="#fff" fill-opacity=".55"/></svg>`,
 /*3 Auto*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M9 29l3.3-9.6A5 5 0 0117 16h14a5 5 0 014.7 3.4L39 29" stroke="#fff" stroke-width="2.6" stroke-linejoin="round" fill="none"/><rect x="6" y="27" width="36" height="10" rx="4" fill="#fff"/><circle cx="15" cy="37" r="4.4" fill="#0B1220"/><circle cx="15" cy="37" r="1.8" fill="#fff"/><circle cx="33" cy="37" r="4.4" fill="#0B1220"/><circle cx="33" cy="37" r="1.8" fill="#fff"/><rect x="13" y="20.5" width="22" height="6" rx="1.5" fill="#fff" fill-opacity=".5"/></svg>`,
 /*4 Products*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M12 16h24l-2 24a3 3 0 01-3 2.7H17a3 3 0 01-3-2.7L12 16z" fill="#fff"/><path d="M17 16v-2a7 7 0 0114 0v2" stroke="#fff" stroke-width="2.8" fill="none"/><rect x="12" y="16" width="24" height="4.5" fill="#0009" fill-opacity=".12"/></svg>`,
 /*5 Services*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M27 21l10.5 10.5a4 4 0 01-5.6 5.6L21.4 26.6" stroke="#fff" stroke-width="3.4" stroke-linecap="round" fill="none"/><path d="M30 12a7 7 0 00-9 9L9 33l4 4 12-12a7 7 0 009-9l-4.6 4.6-4-4z" fill="#fff" fill-opacity=".9"/></svg>`,
-/*6 Business*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="20" height="30" rx="1.5" fill="#fff"/><rect x="28" y="18" width="12" height="22" rx="1.5" fill="#fff" fill-opacity=".6"/><g fill="#0009" fill-opacity=".2"><rect x="12" y="15" width="4" height="4"/><rect x="20" y="15" width="4" height="4"/><rect x="12" y="23" width="4" height="4"/><rect x="20" y="23" width="4" height="4"/><rect x="12" y="31" width="4" height="4"/><rect x="20" y="31" width="4" height="4"/></g><rect x="15" y="34" width="6" height="6" fill="#5856D6"/></svg>`,
-/*7 Professional*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="18" width="32" height="20" rx="3" fill="#fff"/><path d="M18 18v-3a3 3 0 013-3h6a3 3 0 013 3v3" stroke="#fff" stroke-width="2.8" fill="none"/><rect x="8" y="26" width="32" height="4" fill="#0009" fill-opacity=".15"/><rect x="21.5" y="25" width="5" height="5" rx="1" fill="#0A84FF"/></svg>`,
-/*8 Deals*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M42 24.2L23.8 42.4a3 3 0 01-4.2 0L6 28.8a3 3 0 010-4.2L24.2 6.4A3 3 0 0126.3 5.5H38a4 4 0 014 4v11.7a3 3 0 01-.9 2.1z" fill="#fff"/><circle cx="32" cy="15" r="3.4" fill="#FF375F"/></svg>`,
-/*9 Near Me*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 5c-7.7 0-14 6.1-14 13.7C10 29 24 43 24 43s14-14 14-24.3C38 11.1 31.7 5 24 5z" fill="#fff"/><circle cx="24" cy="18.5" r="5.4" fill="#0A84FF"/></svg>`,
+/*6 Business*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="20" height="30" rx="1.5" fill="#fff"/><rect x="28" y="18" width="12" height="22" rx="1.5" fill="#fff" fill-opacity=".6"/><g fill="#0009" fill-opacity=".2"><rect x="12" y="15" width="4" height="4"/><rect x="20" y="15" width="4" height="4"/><rect x="12" y="23" width="4" height="4"/><rect x="20" y="23" width="4" height="4"/><rect x="12" y="31" width="4" height="4"/><rect x="20" y="31" width="4" height="4"/></g><rect x="15" y="34" width="6" height="6" fill="#fff" fill-opacity=".55"/></svg>`,
+/*7 Professional*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="18" width="32" height="20" rx="3" fill="#fff"/><path d="M18 18v-3a3 3 0 013-3h6a3 3 0 013 3v3" stroke="#fff" stroke-width="2.8" fill="none"/><rect x="8" y="26" width="32" height="4" fill="#0009" fill-opacity=".15"/><rect x="21.5" y="25" width="5" height="5" rx="1" fill="#fff" fill-opacity=".7"/></svg>`,
+/*8 Deals*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M42 24.2L23.8 42.4a3 3 0 01-4.2 0L6 28.8a3 3 0 010-4.2L24.2 6.4A3 3 0 0126.3 5.5H38a4 4 0 014 4v11.7a3 3 0 01-.9 2.1z" fill="#fff"/><circle cx="32" cy="15" r="3.4" fill="#8A6D3D"/></svg>`,
+/*9 Near Me*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 5c-7.7 0-14 6.1-14 13.7C10 29 24 43 24 43s14-14 14-24.3C38 11.1 31.7 5 24 5z" fill="#fff"/><circle cx="24" cy="18.5" r="5.4" fill="#2B2B2E"/></svg>`,
 ];
 function iconTile(i, size){ return `<span style="display:inline-flex; width:${size}px; height:${size}px;">${ICONS[i]}</span>`; }
 
 const CATS = [
-  {em:"☀️", color:"linear-gradient(135deg,#FF9F0A,#FF375F)", th:"พลังงานแสงอาทิตย์", en:"Solar & Energy", zh:"太阳能"},
-  {em:"🔋", color:"linear-gradient(135deg,#30D158,#40C8C0)", th:"แบตเตอรี่", en:"Battery", zh:"电池"},
-  {em:"🏠", color:"linear-gradient(135deg,#5E5CE6,#0A84FF)", th:"บ้านและที่ดิน", en:"Home & Land", zh:"房产"},
-  {em:"🚗", color:"linear-gradient(135deg,#0A84FF,#40C8C0)", th:"รถยนต์", en:"Auto", zh:"汽车"},
-  {em:"🛒", color:"linear-gradient(135deg,#FF9F0A,#FFD60A)", th:"สินค้า", en:"Products", zh:"商品"},
-  {em:"🔧", color:"linear-gradient(135deg,#8E8E93,#48484A)", th:"ช่างและบริการ", en:"Services", zh:"服务"},
-  {em:"🏢", color:"linear-gradient(135deg,#5856D6,#5E5CE6)", th:"ธุรกิจ", en:"Business", zh:"商业"},
-  {em:"💼", color:"linear-gradient(135deg,#0A84FF,#5856D6)", th:"งานมืออาชีพ", en:"Professional", zh:"专业服务"},
-  {em:"🔥", color:"linear-gradient(135deg,#FF375F,#FF9F0A)", th:"ดีล", en:"Deals", zh:"优惠"},
-  {em:"📍", color:"linear-gradient(135deg,#30D158,#0A84FF)", th:"บริการใกล้ฉัน", en:"Near Me", zh:"附近服务"},
+  {em:"☀️", color:"linear-gradient(135deg,#A9834B,#8A6D3D)", th:"พลังงานแสงอาทิตย์", en:"Solar & Energy", zh:"太阳能"},
+  {em:"🔋", color:"linear-gradient(135deg,#6E7C6A,#5B7570)", th:"แบตเตอรี่", en:"Battery", zh:"电池"},
+  {em:"🏠", color:"linear-gradient(135deg,#3E4952,#52606D)", th:"บ้านและที่ดิน", en:"Home & Land", zh:"房产"},
+  {em:"🚗", color:"linear-gradient(135deg,#5C5470,#6B6377)", th:"รถยนต์", en:"Auto", zh:"汽车"},
+  {em:"🛒", color:"linear-gradient(135deg,#8A7B6C,#6B6B63)", th:"สินค้า", en:"Products", zh:"商品"},
+  {em:"🔧", color:"linear-gradient(135deg,#54514A,#3E3C37)", th:"ช่างและบริการ", en:"Services", zh:"服务"},
+  {em:"🏢", color:"linear-gradient(135deg,#3E4952,#3E3C37)", th:"ธุรกิจ", en:"Business", zh:"商业"},
+  {em:"💼", color:"linear-gradient(135deg,#5C4A3F,#6B4A3A)", th:"งานมืออาชีพ", en:"Professional", zh:"专业服务"},
+  {em:"🔥", color:"linear-gradient(135deg,#9C6B52,#8A6D3D)", th:"ดีล", en:"Deals", zh:"优惠"},
+  {em:"📍", color:"linear-gradient(135deg,#5B7570,#52606D)", th:"บริการใกล้ฉัน", en:"Near Me", zh:"附近服务"},
 ];
 
 const DEALS = [
-  {cat:1, grad:"linear-gradient(135deg,#30D158,#40C8C0)", was:59000, now:45900, disc:"22%", th:"แบตเตอรี่ LiFePO4 16kWh", en:"LiFePO4 Battery 16kWh", zh:"磷酸铁锂电池 16kWh"},
-  {cat:0, grad:"linear-gradient(135deg,#FF9F0A,#FF375F)", was:120000, now:99000, disc:"18%", th:"ชุดโซลาร์ 5kW พร้อมติดตั้ง", en:"5kW Solar Kit + Install", zh:"5kW太阳能套装+安装"},
-  {cat:3, grad:"linear-gradient(135deg,#0A84FF,#5E5CE6)", was:35000, now:27500, disc:"21%", th:"EV Charger 7kW", en:"EV Charger 7kW", zh:"电动车充电桩 7kW"},
-  {cat:5, grad:"linear-gradient(135deg,#8E8E93,#48484A)", was:8500, now:6900, disc:"19%", th:"ระบบดับเพลิงอัตโนมัติ", en:"Auto Fire Suppression Kit", zh:"自动灭火系统"},
-  {cat:5, grad:"linear-gradient(135deg,#5856D6,#0A84FF)", was:12000, now:8900, disc:"26%", th:"กล้องวงจรปิด Solar 4G", en:"Solar 4G CCTV Camera", zh:"太阳能4G监控摄像头"},
+  {cat:1, grad:"linear-gradient(135deg,#6E7C6A,#5B7570)", was:59000, now:45900, disc:"22%", th:"แบตเตอรี่ LiFePO4 16kWh", en:"LiFePO4 Battery 16kWh", zh:"磷酸铁锂电池 16kWh"},
+  {cat:0, grad:"linear-gradient(135deg,#A9834B,#8A6D3D)", was:120000, now:99000, disc:"18%", th:"ชุดโซลาร์ 5kW พร้อมติดตั้ง", en:"5kW Solar Kit + Install", zh:"5kW太阳能套装+安装"},
+  {cat:3, grad:"linear-gradient(135deg,#52606D,#5C5470)", was:35000, now:27500, disc:"21%", th:"EV Charger 7kW", en:"EV Charger 7kW", zh:"电动车充电桩 7kW"},
+  {cat:5, grad:"linear-gradient(135deg,#8A7B6C,#6B6B63)", was:8500, now:6900, disc:"19%", th:"ระบบดับเพลิงอัตโนมัติ", en:"Auto Fire Suppression Kit", zh:"自动灭火系统"},
+  {cat:5, grad:"linear-gradient(135deg,#5C5470,#52606D)", was:12000, now:8900, disc:"26%", th:"กล้องวงจรปิด Solar 4G", en:"Solar 4G CCTV Camera", zh:"太阳能4G监控摄像头"},
 ];
 
 const PRODUCTS = [
-  {em:"☀️", grad:"linear-gradient(135deg,#FF9F0A,#FF375F)", cat:0, verified:true, price:99000, was:120000, rating:4.9, loc:{th:"สมุทรสาคร", en:"Samut Sakhon", zh:"龙仔厝"},
+  {em:"☀️", grad:"linear-gradient(135deg,#A9834B,#8A6D3D)", cat:0, verified:true, price:99000, was:120000, rating:4.9, loc:{th:"สมุทรสาคร", en:"Samut Sakhon", zh:"龙仔厝"},
    th:"ชุดโซลาร์รูฟท็อป 5kW HAPPYSOLAR", en:"HAPPYSOLAR Rooftop Solar 5kW", zh:"HAPPYSOLAR屋顶太阳能5kW"},
-  {em:"🔋", grad:"linear-gradient(135deg,#30D158,#40C8C0)", cat:1, verified:true, price:45900, was:59000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+  {em:"🔋", grad:"linear-gradient(135deg,#6E7C6A,#5B7570)", cat:1, verified:true, price:45900, was:59000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
    th:"แบตเตอรี่ LiFePO4 16 kWh", en:"LiFePO4 Battery 16 kWh", zh:"磷酸铁锂电池 16 kWh"},
-  {em:"🏠", grad:"linear-gradient(135deg,#5E5CE6,#0A84FF)", cat:2, verified:false, price:2890000, was:null, rating:4.6, loc:{th:"นนทบุรี", en:"Nonthaburi", zh:"暖武里"},
+  {em:"🏠", grad:"linear-gradient(135deg,#5C5470,#52606D)", cat:2, verified:false, price:2890000, was:null, rating:4.6, loc:{th:"นนทบุรี", en:"Nonthaburi", zh:"暖武里"},
    th:"บ้านเดี่ยว 3 ห้องนอน ติดโซลาร์แล้ว", en:"3BR House, Solar Installed", zh:"三居室独立屋，已安装太阳能"},
-  {em:"🚗", grad:"linear-gradient(135deg,#0A84FF,#40C8C0)", cat:3, verified:true, price:659000, was:null, rating:4.7, loc:{th:"ชลบุรี", en:"Chonburi", zh:"春武里"},
+  {em:"🚗", grad:"linear-gradient(135deg,#52606D,#5B7570)", cat:3, verified:true, price:659000, was:null, rating:4.7, loc:{th:"ชลบุรี", en:"Chonburi", zh:"春武里"},
    th:"รถ EV มือสอง ปี 2023", en:"Used EV, Year 2023", zh:"2023年二手电动车"},
-  {em:"🔧", grad:"linear-gradient(135deg,#8E8E93,#48484A)", cat:5, verified:true, price:1200, was:null, rating:5.0, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+  {em:"🔧", grad:"linear-gradient(135deg,#8A7B6C,#6B6B63)", cat:5, verified:true, price:1200, was:null, rating:5.0, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
    th:"ช่างไฟฟ้าใกล้คุณ (เหมาจ่าย/ครั้ง)", en:"Electrician Near You (per visit)", zh:"附近电工（按次收费）"},
-  {em:"📷", grad:"linear-gradient(135deg,#5856D6,#0A84FF)", cat:4, verified:false, price:8900, was:12000, rating:4.5, loc:{th:"เชียงใหม่", en:"Chiang Mai", zh:"清迈"},
+  {em:"📷", grad:"linear-gradient(135deg,#5C5470,#52606D)", cat:4, verified:false, price:8900, was:12000, rating:4.5, loc:{th:"เชียงใหม่", en:"Chiang Mai", zh:"清迈"},
    th:"กล้องวงจรปิด Solar 4G", en:"Solar 4G CCTV Camera", zh:"太阳能4G监控摄像头"},
-  {em:"🏢", grad:"linear-gradient(135deg,#5856D6,#5E5CE6)", cat:6, verified:true, price:15000, was:null, rating:4.9, loc:{th:"ระยอง", en:"Rayong", zh:"罗勇"},
+  {em:"🏢", grad:"linear-gradient(135deg,#5C5470,#52606D)", cat:6, verified:true, price:15000, was:null, rating:4.9, loc:{th:"ระยอง", en:"Rayong", zh:"罗勇"},
    th:"ที่ปรึกษาโซลาร์สำหรับโรงงาน (BOQ)", en:"Industrial Solar Consulting (BOQ)", zh:"工厂太阳能咨询（BOQ）"},
-  {em:"🔌", grad:"linear-gradient(135deg,#0A84FF,#5E5CE6)", cat:0, verified:true, price:27500, was:35000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+  {em:"🔌", grad:"linear-gradient(135deg,#52606D,#5C5470)", cat:0, verified:true, price:27500, was:35000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
    th:"เครื่องชาร์จรถ EV 7kW", en:"EV Charger 7kW", zh:"电动车充电桩 7kW"},
 ];
 
@@ -848,6 +898,13 @@ const BO_USERS = [
   {name:"Aroonrat Chai", em:"👩", phone:"095-320-7781", joined:"2026-08-20", status:"active"},
   {name:"Weerapong T.", em:"🧑", phone:"091-004-2231", joined:"2026-09-05", status:"suspended"},
 ];
+const BO_ADMIN_APPS = [
+  {name:"คุณสมหญิง รักเมือง", level:'region', scope:"ภาคตะวันออก", status:'pending'},
+  {name:"คุณประยุทธ์ ดีใจ", level:'province', scope:"ชลบุรี", status:'pending'},
+  {name:"คุณนภา แสงทอง", level:'district', scope:"เขตบางกะปิ", status:'active'},
+  {name:"คุณวีรยุทธ ตั้งมั่น", level:'shop', scope:"HAPPYSOLAR สาขาลาดพร้าว", status:'pending'},
+];
+
 const BO_SELLERS = [
   {name:"HAPPYSOLAR สมุทรสาคร", em:"☀️", cat:"Solar & Energy", province:"Samut Sakhon", status:"verified", rating:4.9},
   {name:"GreenVolt Battery Co.", em:"🔋", cat:"Battery", province:"Bangkok", status:"verified", rating:4.8},
@@ -872,6 +929,55 @@ const BO_ADS = [
   {name:"GreenVolt — Featured Product", spend:3000, clicks:410, status:"active"},
   {name:"บ้านสุขใจ — Top Search", spend:1500, clicks:180, status:"pending"},
 ];
+
+/* ===== 6-level org hierarchy: Top > Country > Region > Province > District > Shop ===== */
+const ORG_TREE = {
+  name:{th:"ประเทศไทย", en:"Thailand", zh:"泰国"}, level:'country',
+  children:[
+    { name:{th:"ภาคกลาง", en:"Central Region", zh:"中部地区"}, level:'region', children:[
+      { name:{th:"กรุงเทพมหานคร", en:"Bangkok", zh:"曼谷"}, level:'province', children:[
+        { name:{th:"เขตบางกะปิ", en:"Bang Kapi District", zh:"邦卡皮区"}, level:'district', children:[
+          { name:{th:"HAPPYSOLAR สาขาบางกะปิ", en:"HAPPYSOLAR Bang Kapi Branch", zh:"HAPPYSOLAR 邦卡皮分店"}, level:'shop', manager:"คุณสมชาย ใจดี", revenue:412000, leads:38, orders:14, sellers:1, rating:4.8 },
+          { name:{th:"HAPPYSOLAR สาขารามคำแหง", en:"HAPPYSOLAR Ramkhamhaeng Branch", zh:"HAPPYSOLAR 兰甘亨分店"}, level:'shop', manager:"คุณวิภา ทองดี", revenue:298000, leads:25, orders:9, sellers:1, rating:4.6 },
+        ]},
+        { name:{th:"เขตลาดพร้าว", en:"Lat Phrao District", zh:"叻拍焦区"}, level:'district', children:[
+          { name:{th:"HAPPYSOLAR สาขาลาดพร้าว", en:"HAPPYSOLAR Lat Phrao Branch", zh:"HAPPYSOLAR 叻拍焦分店"}, level:'shop', manager:"คุณอนันต์ พูลสวัสดิ์", revenue:356000, leads:31, orders:11, sellers:1, rating:4.9 },
+        ]},
+      ]},
+      { name:{th:"สมุทรสาคร", en:"Samut Sakhon", zh:"龙仔厝"}, level:'province', children:[
+        { name:{th:"อำเภอกระทุ่มแบน", en:"Krathum Baen District", zh:"卡吞班区"}, level:'district', children:[
+          { name:{th:"HAPPYSOLAR สาขากระทุ่มแบน (สำนักงานใหญ่)", en:"HAPPYSOLAR Krathum Baen (HQ)", zh:"HAPPYSOLAR 卡吞班总部"}, level:'shop', manager:"คุณ Maxaiyawat (เจ้าของ)", revenue:684000, leads:52, orders:22, sellers:3, rating:5.0 },
+        ]},
+      ]},
+    ]},
+    { name:{th:"ภาคตะวันออก", en:"Eastern Region", zh:"东部地区"}, level:'region', children:[
+      { name:{th:"ชลบุรี", en:"Chonburi", zh:"春武里"}, level:'province', children:[
+        { name:{th:"อำเภอศรีราชา", en:"Si Racha District", zh:"是拉差区"}, level:'district', children:[
+          { name:{th:"HAPPYSOLAR สาขาศรีราชา", en:"HAPPYSOLAR Si Racha Branch", zh:"HAPPYSOLAR 是拉差分店"}, level:'shop', manager:"คุณกิตติพงษ์ แสนดี", revenue:227000, leads:19, orders:7, sellers:1, rating:4.5 },
+        ]},
+      ]},
+    ]},
+    { name:{th:"ภาคเหนือ", en:"Northern Region", zh:"北部地区"}, level:'region', children:[
+      { name:{th:"เชียงใหม่", en:"Chiang Mai", zh:"清迈"}, level:'province', children:[
+        { name:{th:"อำเภอเมืองเชียงใหม่", en:"Mueang Chiang Mai District", zh:"清迈府城区"}, level:'district', children:[
+          { name:{th:"HAPPYSOLAR สาขาเชียงใหม่", en:"HAPPYSOLAR Chiang Mai Branch", zh:"HAPPYSOLAR 清迈分店"}, level:'shop', manager:"คุณอรุณรัตน์ ไชยวงศ์", revenue:189000, leads:16, orders:6, sellers:1, rating:4.7 },
+        ]},
+      ]},
+    ]},
+  ]
+};
+function orgAgg(node){
+  if(node.level==='shop'){
+    return {revenue:node.revenue, leads:node.leads, orders:node.orders, sellers:node.sellers, shops:1};
+  }
+  const totals = {revenue:0, leads:0, orders:0, sellers:0, shops:0};
+  (node.children||[]).forEach(c=>{
+    const a = orgAgg(c);
+    totals.revenue += a.revenue; totals.leads += a.leads; totals.orders += a.orders; totals.sellers += a.sellers; totals.shops += a.shops;
+  });
+  return totals;
+}
+let orgPath = []; // array of child-indices from root
 
 let LANG = localStorage.getItem('hm_lang') || 'th';
 let THEME = localStorage.getItem('hm_theme') || 'auto';
@@ -911,14 +1017,37 @@ function statusBadge(s){
   return `<span class="status-badge ${m[0]}">${dict[m[1]]}</span>`;
 }
 
+let adminAuthed = localStorage.getItem('hm_admin_auth') === '1';
+
 function go(view){
+  if(view === 'admin' && !adminAuthed){ view = 'admin-login'; }
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.getElementById('view-'+view).classList.add('active');
   document.querySelectorAll('nav.top-tabs button, .bottom-nav button').forEach(b=>{
-    b.classList.toggle('active', b.dataset.view === view);
+    b.classList.toggle('active', b.dataset.view === 'admin' ? view==='admin' : b.dataset.view === view);
   });
   window.scrollTo({top:0, behavior:'instant'});
   if(view === 'admin'){ boGo(currentBoModule || 'dashboard'); }
+}
+
+function adminLogin(){
+  const u = document.getElementById('adminUserInput').value.trim();
+  const p = document.getElementById('adminPassInput').value;
+  const dict = T[LANG];
+  if(u === 'admin' && p === 'happy2026'){
+    adminAuthed = true;
+    localStorage.setItem('hm_admin_auth','1');
+    document.getElementById('adminLoginErr').style.display = 'none';
+    go('admin');
+  } else {
+    document.getElementById('adminLoginErr').style.display = 'block';
+  }
+}
+function adminLogout(){
+  adminAuthed = false;
+  localStorage.removeItem('hm_admin_auth');
+  showToast(LANG==='th'?'ออกจากระบบแล้ว':LANG==='zh'?'已退出登录':'Logged out');
+  go('home');
 }
 
 function doSearch(){
@@ -1122,10 +1251,10 @@ function renderCustomerRequests(){
 function renderSellerDash(){
   const dict = T[LANG];
   const kpis = [
-    {ic:'🎯', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)', lbl: LANG==='th'?'Lead วันนี้':LANG==='zh'?'今日线索':'Leads Today', val:'12', delta:'+18%', up:true},
-    {ic:'💰', bg:'linear-gradient(135deg,#30D158,#40C8C0)', lbl: LANG==='th'?'ยอดขายเดือนนี้':LANG==='zh'?'本月销售额':'Sales This Month', val:fmtMoney(486000), delta:'+9%', up:true},
-    {ic:'📈', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)', lbl: LANG==='th'?'อัตราปิดการขาย':LANG==='zh'?'转化率':'Conversion Rate', val:'32%', delta:'-2%', up:false},
-    {ic:'🏦', bg:'linear-gradient(135deg,#5856D6,#5E5CE6)', lbl: LANG==='th'?'ค่าคอมมิชชั่น':LANG==='zh'?'佣金':'Commission', val:fmtMoney(24300), delta:'+5%', up:true},
+    {ic:'🎯', bg:'linear-gradient(135deg,#52606D,#5C5470)', lbl: LANG==='th'?'Lead วันนี้':LANG==='zh'?'今日线索':'Leads Today', val:'12', delta:'+18%', up:true},
+    {ic:'💰', bg:'linear-gradient(135deg,#6E7C6A,#5B7570)', lbl: LANG==='th'?'ยอดขายเดือนนี้':LANG==='zh'?'本月销售额':'Sales This Month', val:fmtMoney(486000), delta:'+9%', up:true},
+    {ic:'📈', bg:'linear-gradient(135deg,#A9834B,#8A6D3D)', lbl: LANG==='th'?'อัตราปิดการขาย':LANG==='zh'?'转化率':'Conversion Rate', val:'32%', delta:'-2%', up:false},
+    {ic:'🏦', bg:'linear-gradient(135deg,#5C5470,#52606D)', lbl: LANG==='th'?'ค่าคอมมิชชั่น':LANG==='zh'?'佣金':'Commission', val:fmtMoney(24300), delta:'+5%', up:true},
   ];
   document.getElementById('sellerKpi').innerHTML = kpis.map(k=>`
     <div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="delta ${k.up?'up':'down'}">${k.up?'▲':'▼'} ${k.delta}</div></div>`).join('');
@@ -1161,9 +1290,13 @@ const BO_MODULES = [
   {group:'boGroupOverview', items:[
     {id:'dashboard', ic:'📊', key:'boDashboard'},
   ]},
+  {group:'boGroupOrg', items:[
+    {id:'hierarchy', ic:'🗺️', key:'boHierarchy'},
+  ]},
   {group:'boGroupPeople', items:[
     {id:'users', ic:'👥', key:'boUsers'},
     {id:'sellers', ic:'🏪', key:'boSellers'},
+    {id:'adminAccounts', ic:'🛡️', key:'boAdminAccounts'},
   ]},
   {group:'boGroupBiz', items:[
     {id:'leads', ic:'🎯', key:'boLeads'},
@@ -1209,25 +1342,115 @@ function boGo(id){
   document.getElementById('boContent').innerHTML = BO_RENDERERS[id]();
 }
 
+function orgRefresh(){ document.getElementById('boContent').innerHTML = BO_RENDERERS.hierarchy(); }
+function orgGoInto(i){ orgPath.push(i); orgRefresh(); }
+function orgGoUp(){ orgPath.pop(); orgRefresh(); }
+function orgGoRoot(){ orgPath = []; orgRefresh(); }
+function orgGoTo(depth){ orgPath = orgPath.slice(0, depth); orgRefresh(); }
+
 function boTable(headers, rows){
   return `<div class="bo-scroll"><table class="bo-table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
 }
 
+function boApproveActions(status, onOk, onNo){
+  if(status !== 'pending') return '';
+  const dict = T[LANG];
+  return `<div style="display:flex; gap:6px; white-space:nowrap;">
+    <button class="unlock-btn" style="background:var(--sys-green);" onclick="${onOk}">${dict.approveBtn}</button>
+    <button class="unlock-btn" style="background:var(--sys-pink);" onclick="${onNo}">${dict.rejectBtn}</button>
+  </div>`;
+}
+function boSellerAction(i, action){
+  BO_SELLERS[i].status = action==='ok' ? 'verified' : 'suspended';
+  showToast(action==='ok' ? T[LANG].approvedToast : T[LANG].rejectedToast);
+  document.getElementById('boContent').innerHTML = BO_RENDERERS.sellers();
+}
+function boAdminAppAction(i, action){
+  BO_ADMIN_APPS[i].status = action==='ok' ? 'active' : 'suspended';
+  showToast(action==='ok' ? T[LANG].approvedToast : T[LANG].rejectedToast);
+  document.getElementById('boContent').innerHTML = BO_RENDERERS.adminAccounts();
+}
+
 const BO_RENDERERS = {
+  hierarchy: ()=>{
+    const dict = T[LANG];
+    let node = ORG_TREE;
+    for(const i of orgPath){ node = node.children[i]; }
+    const levelKeyMap = {country:'lvCountry', region:'lvRegion', province:'lvProvince', district:'lvDistrict', shop:'lvShop'};
+    const agg = orgAgg(node);
+
+    // breadcrumb
+    let crumbNode = ORG_TREE;
+    let crumbHtml = `<span onclick="orgGoRoot()" style="cursor:pointer; color:var(--sys-blue); font-weight:700;">${dict.allCountry}</span>`;
+    orgPath.forEach((idx,i)=>{
+      crumbNode = crumbNode.children[idx];
+      const isLast = i === orgPath.length-1;
+      crumbHtml += ` <span style="color:var(--label-3);">/</span> `;
+      crumbHtml += isLast
+        ? `<span style="font-weight:700;">${crumbNode.name[LANG]}</span>`
+        : `<span onclick="orgGoTo(${i+1})" style="cursor:pointer; color:var(--sys-blue); font-weight:700;">${crumbNode.name[LANG]}</span>`;
+    });
+
+    const roleBadge = `<div class="panel" style="display:flex; align-items:center; gap:12px;">
+      <div class="kpi-icon" style="background:var(--accent-grad); margin-bottom:0;">👑</div>
+      <div><div style="font-weight:800; font-size:14px;">${dict.yourRole}: ${dict.lvTop}</div><div style="font-size:12px; color:var(--label-2); font-weight:500;">${dict.yourRoleDesc}</div></div>
+    </div>`;
+
+    const kpis = [
+      {ic:'💰', bg:'linear-gradient(135deg,#52606D,#5C5470)', lbl:dict.colRevenue, val:fmtMoney(agg.revenue)},
+      {ic:'🏪', bg:'linear-gradient(135deg,#A9834B,#8A6D3D)', lbl:dict.colShops, val:agg.shops},
+      {ic:'🎯', bg:'linear-gradient(135deg,#6E7C6A,#5B7570)', lbl:dict.boLeads, val:agg.leads},
+      {ic:'👤', bg:'linear-gradient(135deg,#5C5470,#52606D)', lbl:dict.colSellers, val:agg.sellers},
+    ];
+    const kpiHtml = kpis.map(k=>`<div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div></div>`).join('');
+
+    const backBtn = orgPath.length ? `<button class="ghost-btn" style="margin-bottom:14px;" onclick="orgGoUp()">${dict.backUp}</button>` : '';
+
+    let bodyHtml;
+    if(node.level === 'shop'){
+      bodyHtml = `<div class="panel">
+        <h3>${dict.shopDetailTitle}</h3>
+        <div class="result-row"><span>${dict.shopManager}</span><b>${node.manager}</b></div>
+        <div class="result-row"><span>${dict.shopLeadsToday}</span><b>${node.leads}</b></div>
+        <div class="result-row"><span>${dict.shopMonthRevenue}</span><b>${fmtMoney(node.revenue)}</b></div>
+        <div class="result-row"><span>${dict.colSellers}</span><b>${node.sellers}</b></div>
+        <div class="result-row"><span>Rating</span><b>⭐ ${node.rating}</b></div>
+      </div>`;
+    } else {
+      const rows = node.children.map((c,i)=>{
+        const a = orgAgg(c);
+        const label = dict[levelKeyMap[c.level]];
+        return `<tr onclick="orgGoInto(${i})" style="cursor:pointer;">
+          <td><b>${c.name[LANG]}</b><br><span style="font-size:10.5px; color:var(--label-2); font-weight:600;">${label}</span></td>
+          <td>${fmtMoney(a.revenue)}</td>
+          <td>${a.shops}</td>
+          <td>${a.leads}</td>
+          <td style="color:var(--sys-blue); font-weight:700; white-space:nowrap;">${dict.drillIn}</td>
+        </tr>`;
+      }).join('');
+      bodyHtml = boTable([node.level==='district'?dict.lvShop:dict[levelKeyMap[node.children[0].level]], dict.colRevenue, dict.colShops, dict.boLeads, ''], rows);
+    }
+
+    return `${roleBadge}
+      <div class="panel" style="padding:14px 20px;"><div style="font-size:12.5px; font-weight:600;">${dict.viewingLevel}: ${crumbHtml}</div></div>
+      <div class="kpi-grid">${kpiHtml}</div>
+      ${backBtn}
+      ${bodyHtml}`;
+  },
   dashboard: ()=>{
     const dict = T[LANG];
     const kpis = [
-      {ic:'💰', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)', lbl: LANG==='th'?'ยอดขายรวม (GMV)':LANG==='zh'?'总交易额 (GMV)':'Total GMV', val:fmtMoney(3820000), delta:'+14%'},
-      {ic:'🏦', bg:'linear-gradient(135deg,#30D158,#40C8C0)', lbl: LANG==='th'?'รายได้แพลตฟอร์ม':LANG==='zh'?'平台收入':'Platform Revenue', val:fmtMoney(214500), delta:'+11%'},
-      {ic:'🏪', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)', lbl: LANG==='th'?'ผู้ขายทั้งหมด':LANG==='zh'?'卖家总数':'Total Sellers', val:'186', delta:'+7'},
-      {ic:'👥', bg:'linear-gradient(135deg,#5856D6,#5E5CE6)', lbl: LANG==='th'?'ผู้ใช้งาน (MAU)':LANG==='zh'?'月活用户':'Users (MAU)', val:'9,420', delta:'+320'},
+      {ic:'💰', bg:'linear-gradient(135deg,#52606D,#5C5470)', lbl: LANG==='th'?'ยอดขายรวม (GMV)':LANG==='zh'?'总交易额 (GMV)':'Total GMV', val:fmtMoney(3820000), delta:'+14%'},
+      {ic:'🏦', bg:'linear-gradient(135deg,#6E7C6A,#5B7570)', lbl: LANG==='th'?'รายได้แพลตฟอร์ม':LANG==='zh'?'平台收入':'Platform Revenue', val:fmtMoney(214500), delta:'+11%'},
+      {ic:'🏪', bg:'linear-gradient(135deg,#A9834B,#8A6D3D)', lbl: LANG==='th'?'ผู้ขายทั้งหมด':LANG==='zh'?'卖家总数':'Total Sellers', val:'186', delta:'+7'},
+      {ic:'👥', bg:'linear-gradient(135deg,#5C5470,#52606D)', lbl: LANG==='th'?'ผู้ใช้งาน (MAU)':LANG==='zh'?'月活用户':'Users (MAU)', val:'9,420', delta:'+320'},
     ];
     const kpiHtml = kpis.map(k=>`<div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="delta up">▲ ${k.delta}</div></div>`).join('');
     const rev = [
-      {name: LANG==='th'?'Lead Fee':LANG==='zh'?'线索费':'Lead Fee', v:82000, color:'#FF9F0A'},
-      {name: LANG==='th'?'คอมมิชชั่น':LANG==='zh'?'佣金':'Commission', v:96500, color:'#30D158'},
-      {name: LANG==='th'?'สมาชิก':LANG==='zh'?'会员':'Membership', v:24000, color:'#FF375F'},
-      {name: LANG==='th'?'โฆษณา':LANG==='zh'?'广告':'Advertising', v:12000, color:'#0A84FF'},
+      {name: LANG==='th'?'Lead Fee':LANG==='zh'?'线索费':'Lead Fee', v:82000, color:'#A9834B'},
+      {name: LANG==='th'?'คอมมิชชั่น':LANG==='zh'?'佣金':'Commission', v:96500, color:'#6E7C6A'},
+      {name: LANG==='th'?'สมาชิก':LANG==='zh'?'会员':'Membership', v:24000, color:'#9C6B52'},
+      {name: LANG==='th'?'โฆษณา':LANG==='zh'?'广告':'Advertising', v:12000, color:'#52606D'},
     ];
     const max = Math.max(...rev.map(r=>r.v));
     const revHtml = rev.map(r=>`<div style="margin-bottom:12px;"><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span>${r.name}</span><b>${fmtMoney(r.v)}</b></div><div style="height:9px; background:var(--fill); border-radius:99px; overflow:hidden;"><div style="height:100%; width:${(r.v/max*100)}%; background:${r.color}; border-radius:99px;"></div></div></div>`).join('');
@@ -1240,8 +1463,14 @@ const BO_RENDERERS = {
   },
   sellers: ()=>{
     const dict = T[LANG];
-    const rows = BO_SELLERS.map(s=>`<tr><td><span class="bo-avatar">${s.em}</span>${s.name}</td><td>${s.cat}</td><td>${s.province}</td><td>${s.rating? '⭐ '+s.rating : '—'}</td><td>${statusBadge(s.status)}</td></tr>`).join('');
-    return boTable([dict.colName, dict.colCategory, dict.colProvince, 'Rating', dict.colStatus], rows);
+    const rows = BO_SELLERS.map((s,i)=>`<tr><td><span class="bo-avatar">${s.em}</span>${s.name}</td><td>${s.cat}</td><td>${s.province}</td><td>${s.rating? '⭐ '+s.rating : '—'}</td><td>${statusBadge(s.status)}</td><td>${boApproveActions(s.status, `boSellerAction(${i},'ok')`, `boSellerAction(${i},'no')`)}</td></tr>`).join('');
+    return boTable([dict.colName, dict.colCategory, dict.colProvince, 'Rating', dict.colStatus, ''], rows);
+  },
+  adminAccounts: ()=>{
+    const dict = T[LANG];
+    const levelKeyMap = {region:'lvRegion', province:'lvProvince', district:'lvDistrict', shop:'lvShop'};
+    const rows = BO_ADMIN_APPS.map((a,i)=>`<tr><td>${a.name}</td><td>${dict[levelKeyMap[a.level]]}</td><td>${a.scope}</td><td>${statusBadge(a.status)}</td><td>${boApproveActions(a.status, `boAdminAppAction(${i},'ok')`, `boAdminAppAction(${i},'no')`)}</td></tr>`).join('');
+    return boTable([dict.colName, dict.colLevel, dict.colScope, dict.colStatus, ''], rows);
   },
   leads: ()=>{
     const dict = T[LANG];
@@ -1256,9 +1485,9 @@ const BO_RENDERERS = {
   payments: ()=>{
     const dict = T[LANG];
     const wallets = [
-      {lbl: LANG==='th'?'ยอดคงเหลือรวมในระบบ':LANG==='zh'?'系统总余额':'Total Wallet Balance', val: fmtMoney(1240500), ic:'💳', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)'},
-      {lbl: LANG==='th'?'เครดิต Lead คงเหลือ':LANG==='zh'?'线索余额':'Lead Credit Balance', val: fmtMoney(86000), ic:'🎯', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)'},
-      {lbl: LANG==='th'?'รอถอนเงิน':LANG==='zh'?'待提现':'Pending Withdrawals', val: fmtMoney(52000), ic:'🏦', bg:'linear-gradient(135deg,#30D158,#40C8C0)'},
+      {lbl: LANG==='th'?'ยอดคงเหลือรวมในระบบ':LANG==='zh'?'系统总余额':'Total Wallet Balance', val: fmtMoney(1240500), ic:'💳', bg:'linear-gradient(135deg,#52606D,#5C5470)'},
+      {lbl: LANG==='th'?'เครดิต Lead คงเหลือ':LANG==='zh'?'线索余额':'Lead Credit Balance', val: fmtMoney(86000), ic:'🎯', bg:'linear-gradient(135deg,#A9834B,#8A6D3D)'},
+      {lbl: LANG==='th'?'รอถอนเงิน':LANG==='zh'?'待提现':'Pending Withdrawals', val: fmtMoney(52000), ic:'🏦', bg:'linear-gradient(135deg,#6E7C6A,#5B7570)'},
     ];
     const kpiHtml = wallets.map(k=>`<div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div></div>`).join('');
     const tx = [
