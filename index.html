@@ -570,8 +570,13 @@ footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8
     <div class="wrap" style="max-width:420px;">
       <div class="section-head"><h2 data-i18n="adminLoginTitle"></h2></div>
       <div class="ai-panel">
-        <div class="field"><label data-i18n="fldUsername"></label><input type="text" id="adminUserInput" placeholder="admin"></div>
-        <div class="field"><label data-i18n="fldPassword"></label><input type="password" id="adminPassInput" placeholder="••••••••"></div>
+        <div class="field"><label data-i18n="fldUsername"></label><input type="text" id="adminUserInput" placeholder="admin" autocapitalize="off" autocorrect="off"></div>
+        <div class="field"><label data-i18n="fldPassword"></label>
+          <div style="position:relative;">
+            <input type="password" id="adminPassInput" placeholder="••••••••" autocapitalize="off" autocorrect="off" style="padding-right:46px;">
+            <button type="button" onclick="toggleAdminPassVisibility()" style="position:absolute; right:6px; top:50%; transform:translateY(-50%); width:34px; height:34px; border-radius:9px; background:var(--card); font-size:15px;">👁</button>
+          </div>
+        </div>
         <p id="adminLoginErr" style="display:none; color:var(--sys-pink); font-size:12.5px; font-weight:700; margin-bottom:10px;" data-i18n="loginError"></p>
         <button class="pill-btn" style="width:100%; padding:14px;" onclick="adminLogin()" data-i18n="loginBtn"></button>
         <p style="font-size:11px; color:var(--label-2); margin-top:14px; text-align:center; font-weight:500;" data-i18n="loginHint"></p>
@@ -1030,9 +1035,13 @@ function go(view){
   if(view === 'admin'){ boGo(currentBoModule || 'dashboard'); }
 }
 
+function toggleAdminPassVisibility(){
+  const inp = document.getElementById('adminPassInput');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+}
 function adminLogin(){
-  const u = document.getElementById('adminUserInput').value.trim();
-  const p = document.getElementById('adminPassInput').value;
+  const u = document.getElementById('adminUserInput').value.trim().toLowerCase();
+  const p = document.getElementById('adminPassInput').value.trim();
   const dict = T[LANG];
   if(u === 'admin' && p === 'happy2026'){
     adminAuthed = true;
