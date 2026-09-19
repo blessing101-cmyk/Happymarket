@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HAPPY MARKET</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   HAPPY MARKET — iOS-inspired design system
+   Palette: iOS system colors, translucency, continuous corners
+============================================================ */
+:root{
+  --sys-blue:#0A84FF;
+  --sys-blue-deep:#0060DF;
+  --sys-purple:#5E5CE6;
+  --sys-teal:#40C8C0;
+  --sys-pink:#FF375F;
+  --sys-orange:#FF9F0A;
+  --sys-green:#30D158;
+  --sys-yellow:#FFD60A;
+  --sys-indigo:#5856D6;
+
+  --bg:#F2F2F7;
+  --bg-elevated:#FFFFFF;
+  --card:#FFFFFF;
+  --card-glass:rgba(255,255,255,0.72);
+  --hairline:rgba(60,60,67,0.13);
+  --label:#1C1C1E;
+  --label-2:#6C6C70;
+  --label-3:#AEAEB2;
+  --fill:#F2F2F7;
+  --grouped:#EFEFF4;
+  --shadow:0 10px 34px -14px rgba(30,30,45,0.18);
+  --shadow-sm:0 2px 10px -4px rgba(30,30,45,0.12);
+  --r-s:12px; --r-m:18px; --r-l:26px; --r-xl:32px;
+  --accent-grad: linear-gradient(135deg, var(--sys-blue), var(--sys-purple));
+}
+:root[data-theme="dark"], @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#000000;
+  --bg-elevated:#1C1C1E;
+  --card:#1C1C1E;
+  --card-glass:rgba(28,28,30,0.72);
+  --hairline:rgba(84,84,88,0.5);
+  --label:#F2F2F7;
+  --label-2:#98989D;
+  --label-3:#636366;
+  --fill:#1C1C1E;
+  --grouped:#161617;
+  --shadow:0 10px 34px -14px rgba(0,0,0,0.6);
+  --shadow-sm:0 2px 10px -4px rgba(0,0,0,0.5);
+}}
+:root[data-theme="dark"]{
+  --bg:#000000; --bg-elevated:#1C1C1E; --card:#1C1C1E; --card-glass:rgba(28,28,30,0.72);
+  --hairline:rgba(84,84,88,0.5); --label:#F2F2F7; --label-2:#98989D; --label-3:#636366;
+  --fill:#1C1C1E; --grouped:#161617; --shadow:0 10px 34px -14px rgba(0,0,0,0.6);
+}
+*{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg); color:var(--label);
+  font-family:-apple-system,BlinkMacSystemFont,'Inter','Noto Sans SC',sans-serif;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  transition:background .35s ease, color .35s ease;
+  letter-spacing:-0.01em;
+}
+body.lang-zh{ font-family:'Noto Sans SC','Inter',sans-serif; letter-spacing:0; }
+h1,h2,h3,h4,.display{ font-weight:800; letter-spacing:-0.02em; }
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+button{font-family:inherit; cursor:pointer; border:none; background:none; -webkit-tap-highlight-color:transparent;}
+button:active{transform:scale(0.97);}
+.wrap{max-width:1180px; margin:0 auto; padding:0 20px;}
+.scroll-x{overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none;}
+.scroll-x::-webkit-scrollbar{display:none;}
+
+/* ===== Header (glass) ===== */
+header{
+  position:sticky; top:0; z-index:50;
+  background:var(--card-glass);
+  backdrop-filter:blur(24px) saturate(1.6);
+  -webkit-backdrop-filter:blur(24px) saturate(1.6);
+  border-bottom:0.5px solid var(--hairline);
+}
+.header-inner{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:13px 20px; max-width:1180px; margin:0 auto; gap:14px;
+}
+.brand{display:flex; align-items:center; gap:10px; font-weight:800; font-size:19px;}
+.brand-mark{
+  width:34px; height:34px; border-radius:10px;
+  background:var(--accent-grad);
+  display:flex; align-items:center; justify-content:center;
+  font-size:16px; flex-shrink:0; box-shadow:0 4px 12px -3px rgba(94,92,230,0.55);
+}
+.brand small{display:block; font-size:9.5px; font-weight:600; color:var(--label-2); letter-spacing:.01em; margin-top:1px;}
+.header-actions{display:flex; align-items:center; gap:8px;}
+.lang-switch{display:flex; background:var(--fill); border-radius:10px; padding:2px; gap:1px;}
+.lang-switch button{
+  padding:6px 10px; border-radius:8px; font-size:12px; font-weight:700; color:var(--label-2); background:transparent; transition:all .25s;
+}
+.lang-switch button.active{background:var(--bg-elevated); color:var(--label); box-shadow:var(--shadow-sm);}
+.pill-btn{
+  padding:9px 17px; border-radius:980px; font-weight:700; font-size:13.5px;
+  background:var(--sys-blue); color:#fff; white-space:nowrap; box-shadow:0 6px 16px -6px rgba(10,132,255,0.55);
+}
+.ghost-btn{
+  padding:9px 15px; border-radius:980px; font-weight:700; font-size:13.5px;
+  background:var(--fill); color:var(--label);
+}
+.icon-btn{width:36px; height:36px; border-radius:50%; background:var(--fill); display:flex; align-items:center; justify-content:center; font-size:15px;}
+
+/* Segmented control nav */
+nav.top-tabs{display:flex; gap:3px; padding:0 20px 12px; max-width:1180px; margin:0 auto; overflow-x:auto; scrollbar-width:none; background:transparent;}
+nav.top-tabs::-webkit-scrollbar{display:none;}
+.segwrap{display:flex; gap:3px; background:var(--fill); padding:3px; border-radius:12px; width:max-content;}
+nav.top-tabs button{
+  padding:7px 14px; border-radius:9px; font-size:13px; font-weight:600; color:var(--label-2); white-space:nowrap; background:transparent; transition:all .25s;
+}
+nav.top-tabs button.active{background:var(--bg-elevated); color:var(--label); box-shadow:var(--shadow-sm);}
+
+/* ===== Hero — bold dark mesh, always-dark regardless of app theme ===== */
+.hero{
+  padding:56px 20px 46px; position:relative; overflow:hidden;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(64,200,192,0.5) 0%, transparent 42%),
+    radial-gradient(circle at 88% 8%, rgba(255,159,10,0.45) 0%, transparent 40%),
+    radial-gradient(circle at 78% 85%, rgba(94,92,230,0.55) 0%, transparent 45%),
+    radial-gradient(circle at 20% 92%, rgba(10,132,255,0.4) 0%, transparent 40%),
+    linear-gradient(180deg,#07070C 0%, #0C0C14 100%);
+}
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.5; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+}
+.hero-inner{max-width:1180px; margin:0 auto; position:relative;}
+.hero h1{font-size:clamp(30px,5.5vw,50px); font-weight:800; line-height:1.1; max-width:760px; color:#fff;}
+.hero p.sub{margin-top:13px; font-size:16px; color:rgba(255,255,255,0.68); max-width:520px; font-weight:500;}
+.search-box{
+  margin-top:26px; background:rgba(255,255,255,0.96); backdrop-filter:blur(20px); border-radius:980px;
+  display:flex; align-items:center; padding:5px 5px 5px 20px; box-shadow:0 20px 50px -18px rgba(0,0,0,0.6); max-width:640px; gap:8px;
+}
+.search-box input{flex:1; border:none; outline:none; background:transparent; font-size:15px; color:#1C1C1E; padding:11px 0; font-weight:500;}
+.search-box button{background:#1C1C1E; color:#fff; padding:12px 22px; border-radius:980px; font-weight:700; font-size:14px; white-space:nowrap;}
+.ai-cta-row{margin-top:15px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.ai-cta{
+  display:inline-flex; align-items:center; gap:8px; background:var(--accent-grad);
+  color:#fff; padding:11px 20px; border-radius:980px; font-weight:700; font-size:14px; box-shadow:0 10px 24px -8px rgba(94,92,230,0.5);
+}
+.ai-cta .spark{font-size:16px;}
+.hero-hint{font-size:12.5px; color:rgba(255,255,255,0.5); font-weight:500;}
+
+/* ===== Section shell ===== */
+.section{padding:34px 20px;}
+.section-head{display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px; gap:12px;}
+.section-head h2{font-size:21px; font-weight:800; color:var(--label);}
+.section-head .see-all{font-size:13px; font-weight:700; color:var(--sys-blue);}
+
+/* ===== Categories ===== */
+.cat-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:11px;}
+@media(max-width:760px){.cat-grid{grid-template-columns:repeat(3,1fr);}}
+.cat-card{
+  background:var(--card); border-radius:var(--r-m);
+  padding:16px 8px; text-align:center; display:flex; flex-direction:column; align-items:center; gap:8px;
+  transition:transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease; box-shadow:var(--shadow-sm);
+}
+.cat-card:active{transform:scale(0.95);}
+.cat-card .emoji-tile{width:44px; height:44px; border-radius:13px; display:flex; align-items:center; justify-content:center; font-size:21px;}
+.cat-card span{font-size:11.5px; font-weight:600; color:var(--label);}
+
+/* ===== Deals strip ===== */
+.deal-card{
+  min-width:220px; background:var(--card); border-radius:var(--r-m);
+  overflow:hidden; flex-shrink:0; box-shadow:var(--shadow-sm);
+}
+.deal-img{height:112px; display:flex; align-items:center; justify-content:center; font-size:32px; color:#fff;}
+.deal-body{padding:13px 14px;}
+.deal-badge{display:inline-block; background:var(--sys-pink); color:#fff; font-size:10.5px; font-weight:800; padding:3px 8px; border-radius:7px; margin-bottom:6px;}
+.deal-title{font-size:13px; font-weight:700; line-height:1.3;}
+.deal-price{margin-top:7px; display:flex; align-items:baseline; gap:6px;}
+.deal-price .now{font-weight:800; color:var(--sys-pink); font-size:16px;}
+.deal-price .was{font-size:11.5px; color:var(--label-3); text-decoration:line-through;}
+.deal-strip{display:flex; gap:13px; padding-bottom:6px;}
+
+/* ===== Marketplace grid ===== */
+.filter-row{display:flex; gap:8px; overflow-x:auto; padding-bottom:14px; scrollbar-width:none;}
+.filter-row::-webkit-scrollbar{display:none;}
+.filter-chip{padding:8px 15px; border-radius:980px; font-size:13px; font-weight:600; white-space:nowrap; background:var(--fill); color:var(--label-2); transition:all .2s;}
+.filter-chip.active{background:var(--label); color:var(--bg);}
+.grid{display:grid; grid-template-columns:repeat(4,1fr); gap:15px;}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr);}}
+.p-card{background:var(--card); border-radius:var(--r-m); overflow:hidden; display:flex; flex-direction:column; box-shadow:var(--shadow-sm); transition:transform .18s;}
+.p-card:active{transform:scale(0.98);}
+.p-img{height:126px; display:flex; align-items:center; justify-content:center; font-size:32px; position:relative; color:#fff;}
+.p-verified{position:absolute; top:8px; left:8px; background:rgba(255,255,255,0.92); color:var(--sys-green); font-size:10px; font-weight:800; padding:3px 7px; border-radius:7px; display:flex; align-items:center; gap:3px; backdrop-filter:blur(6px);}
+.p-body{padding:12px 13px 14px; display:flex; flex-direction:column; gap:6px; flex:1;}
+.p-title{font-size:13px; font-weight:700; line-height:1.35; min-height:34px;}
+.p-meta{font-size:11px; color:var(--label-2); display:flex; align-items:center; gap:6px; font-weight:500;}
+.p-price{display:flex; align-items:baseline; gap:6px; margin-top:2px;}
+.p-price .now{font-weight:800; font-size:16px; color:var(--label);}
+.p-price .was{font-size:11px; color:var(--label-3); text-decoration:line-through;}
+.p-actions{display:flex; gap:6px; margin-top:8px;}
+.p-actions button{flex:1; padding:9px 4px; border-radius:11px; font-size:12px; font-weight:700;}
+.btn-primary{background:var(--label); color:var(--bg);}
+.btn-secondary{background:var(--fill); color:var(--label);}
+
+/* ===== AI Match wizard ===== */
+.ai-panel{background:var(--card); border-radius:var(--r-xl); padding:26px; box-shadow:var(--shadow);}
+.ai-steps{display:flex; gap:6px; margin-bottom:22px;}
+.ai-step-dot{height:4px; flex:1; border-radius:99px; background:var(--fill);}
+.ai-step-dot.done{background:var(--sys-blue);}
+.field{margin-bottom:16px;}
+.field label{display:block; font-size:13px; font-weight:700; margin-bottom:8px; color:var(--label);}
+.field select, .field input[type=text], .field input[type=number]{
+  width:100%; padding:13px 15px; border-radius:14px; border:none; background:var(--fill); color:var(--label); font-size:15px; font-weight:500;
+}
+.field select:focus, .field input:focus{outline:2px solid var(--sys-blue);}
+.chip-select{display:flex; gap:8px; flex-wrap:wrap;}
+.chip-opt{padding:9px 15px; border-radius:980px; font-size:13px; font-weight:600; background:var(--fill); color:var(--label-2); transition:all .2s;}
+.chip-opt.sel{background:var(--sys-blue); color:#fff;}
+.wizard-nav{display:flex; justify-content:space-between; margin-top:8px;}
+.result-card{background:var(--fill); border-radius:var(--r-l); padding:18px; margin-top:6px;}
+.result-row{display:flex; justify-content:space-between; padding:8px 0; border-bottom:0.5px solid var(--hairline); font-size:13.5px;}
+.result-row:last-child{border-bottom:none;}
+.result-row b{color:var(--sys-blue); font-weight:700;}
+
+/* ===== Dashboards ===== */
+.dash-tabs{display:flex; gap:8px; margin-bottom:22px; flex-wrap:wrap;}
+.kpi-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:13px; margin-bottom:20px;}
+@media(max-width:800px){.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+.kpi-card{background:var(--card); border-radius:var(--r-m); padding:17px; box-shadow:var(--shadow-sm); position:relative; overflow:hidden;}
+.kpi-card .kpi-icon{width:32px; height:32px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:15px; margin-bottom:10px; color:#fff;}
+.kpi-card .lbl{font-size:11.5px; color:var(--label-2); font-weight:600;}
+.kpi-card .val{font-size:21px; font-weight:800; margin-top:4px; color:var(--label);}
+.kpi-card .delta{font-size:11px; font-weight:700; margin-top:5px; display:inline-block; padding:2px 7px; border-radius:6px;}
+.delta.up{color:var(--sys-green); background:rgba(48,209,88,0.12);}
+.delta.down{color:var(--sys-pink); background:rgba(255,55,95,0.12);}
+.panel{background:var(--card); border-radius:var(--r-l); padding:20px; margin-bottom:16px; box-shadow:var(--shadow-sm);}
+.panel h3{font-size:15px; font-weight:800; margin-bottom:14px;}
+.bar-chart{display:flex; align-items:flex-end; gap:10px; height:140px;}
+.bar-chart .bar-wrap{flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; height:100%; justify-content:flex-end;}
+.bar-chart .bar{width:100%; border-radius:8px 8px 3px 3px; background:var(--accent-grad);}
+.bar-chart .bar-lbl{font-size:10.5px; color:var(--label-2); font-weight:600;}
+.lead-row{display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:0.5px solid var(--hairline);}
+.lead-row:last-child{border-bottom:none;}
+.lead-avatar{width:38px; height:38px; border-radius:12px; background:var(--fill); display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;}
+.lead-info{flex:1; min-width:0;}
+.lead-info .n{font-size:13.5px; font-weight:700;}
+.lead-info .d{font-size:11.5px; color:var(--label-2); font-weight:500;}
+.blur{filter:blur(5px); user-select:none;}
+.lead-tag{font-size:10px; font-weight:800; padding:4px 8px; border-radius:7px;}
+.tag-new{background:rgba(10,132,255,0.12); color:var(--sys-blue);}
+.tag-hot{background:rgba(255,55,95,0.12); color:var(--sys-pink);}
+.unlock-btn{padding:7px 13px; border-radius:980px; background:var(--sys-blue); color:#fff; font-size:11.5px; font-weight:700; flex-shrink:0;}
+.menu-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(115px,1fr)); gap:10px;}
+.menu-item{background:var(--card); border-radius:var(--r-s); padding:15px 10px; text-align:center; font-size:11.5px; font-weight:600; box-shadow:var(--shadow-sm);}
+.menu-item .em{font-size:19px; display:block; margin-bottom:7px;}
+
+/* ===== How it works / footer ===== */
+.steps-flow{display:flex; gap:10px; overflow-x:auto; padding-bottom:8px;}
+.step-card{min-width:145px; background:var(--card); border-radius:var(--r-m); padding:16px; flex-shrink:0; box-shadow:var(--shadow-sm);}
+.step-card .n{font-size:19px; margin-bottom:8px;}
+.step-card p{font-size:12px; color:var(--label-2); margin-top:4px; line-height:1.4; font-weight:600;}
+footer{background:var(--label); color:var(--bg); padding:40px 20px 90px; margin-top:16px;}
+:root[data-theme="dark"] footer, @media (prefers-color-scheme:dark){footer{background:#0b0b0d;}}
+.footer-grid{display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:24px; max-width:1180px; margin:0 auto;}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;}}
+footer h4{font-size:12.5px; margin-bottom:12px; opacity:.6;}
+footer a, footer p{font-size:12.5px; opacity:.55; display:block; margin-bottom:8px;}
+.demo-banner{background:var(--sys-yellow); color:#4A3B00; text-align:center; font-size:12px; font-weight:700; padding:7px 14px;}
+
+/* ===== Bottom nav (mobile, iOS tab bar) ===== */
+.bottom-nav{position:fixed; bottom:0; left:0; right:0; background:var(--card-glass); backdrop-filter:blur(24px) saturate(1.6); -webkit-backdrop-filter:blur(24px) saturate(1.6); border-top:0.5px solid var(--hairline); display:flex; z-index:60; padding-bottom:env(safe-area-inset-bottom);}
+.bottom-nav button{flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:8px 0 7px; background:transparent; color:var(--label-3); font-size:10px; font-weight:600;}
+.bottom-nav button.active{color:var(--sys-blue);}
+.bottom-nav .bn-em{font-size:20px;}
+.fab{position:fixed; bottom:78px; right:18px; z-index:61; background:var(--accent-grad); color:#fff; padding:14px 20px; border-radius:980px; font-weight:700; font-size:13px; box-shadow:0 12px 28px -8px rgba(94,92,230,0.6); display:flex; align-items:center; gap:7px;}
+
+.view{display:none;}
+.view.active{display:block;}
+.toast{position:fixed; bottom:150px; left:50%; transform:translateX(-50%); background:var(--label); color:var(--bg); padding:11px 20px; border-radius:980px; font-size:13px; font-weight:600; z-index:100; opacity:0; pointer-events:none; transition:opacity .25s, transform .25s;}
+.toast.show{opacity:1; transform:translateX(-50%) translateY(-6px);}
+
+@media(min-width:900px){ .bottom-nav,.fab{display:none;} body{padding-bottom:0;} }
+@media(max-width:899px){ body{padding-bottom:64px;} }
+
+/* ============================================================
+   BACK OFFICE (Admin) — dedicated console layout
+============================================================ */
+.bo-shell{display:flex; min-height:100vh; background:var(--grouped);}
+.bo-sidebar{
+  width:236px; flex-shrink:0;
+  background:linear-gradient(190deg,#12121A 0%, #08080D 100%);
+  padding:18px 12px; position:sticky; top:0; height:100vh; overflow-y:auto;
+  box-shadow:0 0 0 0.5px rgba(255,255,255,0.06) inset;
+}
+.bo-brand{display:flex; align-items:center; gap:9px; padding:8px 8px 18px; font-weight:800; font-size:15px; color:#fff;}
+.bo-brand span{color:rgba(255,255,255,0.4) !important;}
+.bo-nav-group{margin-bottom:16px;}
+.bo-nav-label{font-size:10.5px; font-weight:800; color:rgba(255,255,255,0.32); text-transform:uppercase; letter-spacing:.05em; padding:0 10px 8px;}
+.bo-nav-item{
+  display:flex; align-items:center; gap:10px; padding:9px 10px; border-radius:10px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.65);
+  width:100%; text-align:left; margin-bottom:2px; transition:all .15s;
+}
+.bo-nav-item .ic{width:22px; text-align:center; font-size:14px;}
+.bo-nav-item.active{background:var(--accent-grad); color:#fff; box-shadow:0 6px 16px -6px rgba(94,92,230,0.6);}
+.bo-nav-item:hover:not(.active){background:rgba(255,255,255,0.07); color:#fff;}
+.bo-main{flex:1; padding:26px 28px 60px; min-width:0;}
+.bo-topbar{display:flex; align-items:center; justify-content:space-between; margin-bottom:22px; flex-wrap:wrap; gap:12px;}
+.bo-topbar h2{font-size:24px; font-weight:800;}
+.bo-mobile-toggle{display:none;}
+@media(max-width:860px){
+  .bo-sidebar{position:fixed; left:-260px; top:0; z-index:70; box-shadow:var(--shadow); transition:left .25s ease;}
+  .bo-sidebar.open{left:0;}
+  .bo-mobile-toggle{display:flex;}
+  .bo-main{padding:18px 16px 90px;}
+  .bo-overlay{display:none; position:fixed; inset:0; background:rgba(0,0,0,0.35); z-index:65;}
+  .bo-overlay.open{display:block;}
+}
+.bo-table{width:100%; border-collapse:collapse; background:var(--card); border-radius:var(--r-m); overflow:hidden; box-shadow:var(--shadow-sm);}
+.bo-table th{text-align:left; font-size:11px; font-weight:700; color:var(--label-2); padding:12px 14px; background:var(--fill); text-transform:uppercase; letter-spacing:.03em;}
+.bo-table td{padding:13px 14px; font-size:13px; border-top:0.5px solid var(--hairline); vertical-align:middle;}
+.bo-table tr:hover td{background:var(--fill);}
+.status-badge{font-size:10.5px; font-weight:800; padding:4px 9px; border-radius:7px; display:inline-block;}
+.st-active{background:rgba(48,209,88,0.14); color:var(--sys-green);}
+.st-pending{background:rgba(255,159,10,0.16); color:var(--sys-orange);}
+.st-suspended{background:rgba(255,55,95,0.14); color:var(--sys-pink);}
+.st-verified{background:rgba(10,132,255,0.14); color:var(--sys-blue);}
+.bo-avatar{width:30px; height:30px; border-radius:9px; background:var(--fill); display:inline-flex; align-items:center; justify-content:center; font-size:14px; margin-right:8px; vertical-align:middle;}
+.bo-scroll{overflow-x:auto;}
+.settings-row{display:flex; align-items:center; justify-content:space-between; padding:14px 0; border-bottom:0.5px solid var(--hairline); gap:16px;}
+.settings-row:last-child{border-bottom:none;}
+.settings-row .s-lbl{font-size:13.5px; font-weight:700;}
+.settings-row .s-sub{font-size:11.5px; color:var(--label-2); font-weight:500; margin-top:2px;}
+.mini-input{width:110px; padding:9px 12px; border-radius:10px; border:none; background:var(--fill); font-size:13.5px; font-weight:700; text-align:right; color:var(--label);}
+.toggle{width:46px; height:28px; border-radius:99px; background:var(--fill); position:relative; flex-shrink:0; transition:background .2s;}
+.toggle.on{background:var(--sys-green);}
+.toggle::after{content:""; position:absolute; top:2px; left:2px; width:24px; height:24px; border-radius:50%; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,0.2); transition:left .2s;}
+.toggle.on::after{left:20px;}
+.membership-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px;}
+@media(max-width:900px){.membership-grid{grid-template-columns:repeat(2,1fr);}}
+.mp-card{background:var(--card); border-radius:var(--r-m); padding:18px; box-shadow:var(--shadow-sm);}
+.mp-card .mp-name{font-weight:800; font-size:14px;}
+.mp-card .mp-price{font-size:20px; font-weight:800; margin:8px 0; color:var(--sys-blue);}
+.mp-card ul{list-style:none; margin-top:8px;}
+.mp-card li{font-size:12px; color:var(--label-2); padding:4px 0; font-weight:500;}
+.mp-card li::before{content:"✓ "; color:var(--sys-green); font-weight:800;}
+</style>
+</head>
+<body>
+
+<header id="mainHeader">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark">☀️</div>
+      <div>
+        HAPPY MARKET
+        <small data-i18n="tagline"></small>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="lang-switch">
+        <button data-lang="th" onclick="setLang('th')">TH</button>
+        <button data-lang="en" onclick="setLang('en')">EN</button>
+        <button data-lang="zh" onclick="setLang('zh')">中文</button>
+      </div>
+      <button class="icon-btn" onclick="toggleTheme()" title="Theme">🌓</button>
+    </div>
+  </div>
+  <nav class="top-tabs"><div class="segwrap">
+    <button data-view="home" class="active" onclick="go('home')" data-i18n="navHome"></button>
+    <button data-view="marketplace" onclick="go('marketplace')" data-i18n="navMarket"></button>
+    <button data-view="ai-match" onclick="go('ai-match')" data-i18n="navAI"></button>
+    <button data-view="customer" onclick="go('customer')" data-i18n="navMy"></button>
+    <button data-view="seller" onclick="go('seller')" data-i18n="navSeller"></button>
+    <button data-view="admin" onclick="go('admin')" data-i18n="navAdmin"></button>
+  </div></nav>
+</header>
+
+<!-- ============ HOME VIEW ============ -->
+<div class="view active" id="view-home">
+  <section class="hero">
+    <div class="hero-inner">
+      <h1 data-i18n="heroTitle"></h1>
+      <p class="sub" data-i18n="heroSub"></p>
+      <div class="search-box">
+        <input type="text" id="searchInput" data-i18n-placeholder="searchPlaceholder">
+        <button onclick="doSearch()" data-i18n="searchBtn"></button>
+      </div>
+      <div class="ai-cta-row">
+        <button class="ai-cta" onclick="go('ai-match')"><span class="spark">✨</span><span data-i18n="aiCta"></span></button>
+        <span class="hero-hint" data-i18n="heroHint"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="catTitle"></h2></div>
+      <div class="cat-grid" id="catGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="dealsTitle"></h2><span class="see-all" onclick="go('marketplace')" data-i18n="seeAll"></span></div>
+      <div class="scroll-x"><div class="deal-strip" id="dealStrip"></div></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="verifiedTitle"></h2><span class="see-all" onclick="go('marketplace')" data-i18n="seeAll"></span></div>
+      <div class="grid" id="verifiedGrid"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="howTitle"></h2></div>
+      <div class="steps-flow" id="howSteps"></div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="wrap">
+      <div class="panel" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+        <div>
+          <h3 style="margin-bottom:6px;" data-i18n="sellerCtaTitle"></h3>
+          <p style="font-size:13px; color:var(--label-2); font-weight:500;" data-i18n="sellerCtaSub"></p>
+        </div>
+        <button class="pill-btn" onclick="go('seller-signup')" data-i18n="becomeSeller"></button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ MARKETPLACE VIEW ============ -->
+<div class="view" id="view-marketplace">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="navMarket"></h2></div>
+      <div class="filter-row" id="filterRow"></div>
+      <div class="grid" id="marketGrid"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ AI MATCH VIEW ============ -->
+<div class="view" id="view-ai-match">
+  <section class="section">
+    <div class="wrap" style="max-width:620px;">
+      <div class="section-head"><h2 data-i18n="aiMatchTitle"></h2></div>
+      <div class="ai-panel">
+        <div class="ai-steps">
+          <div class="ai-step-dot" id="dot1"></div>
+          <div class="ai-step-dot" id="dot2"></div>
+          <div class="ai-step-dot" id="dot3"></div>
+        </div>
+        <div id="aiStepBody"></div>
+        <div class="wizard-nav">
+          <button class="ghost-btn" id="aiBackBtn" onclick="aiBack()" data-i18n="back"></button>
+          <button class="pill-btn" id="aiNextBtn" onclick="aiNext()" data-i18n="next"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SELLER SIGNUP VIEW ============ -->
+<div class="view" id="view-seller-signup">
+  <section class="section">
+    <div class="wrap" style="max-width:560px;">
+      <div class="section-head"><h2 data-i18n="signupTitle"></h2></div>
+      <div class="ai-panel">
+        <div class="field"><label data-i18n="fldBizName"></label><input type="text" id="signupBizName" data-i18n-placeholder="fldBizNamePh"></div>
+        <div class="field"><label data-i18n="fldCategory"></label>
+          <div class="chip-select" id="signupCatChips"></div>
+        </div>
+        <div class="field"><label data-i18n="fldPhone"></label><input type="text" id="signupPhone" data-i18n-placeholder="fldPhonePh"></div>
+        <div class="field"><label data-i18n="fldProvince"></label><input type="text" id="signupProvince" data-i18n-placeholder="fldProvincePh"></div>
+        <button class="pill-btn" style="width:100%; padding:14px;" onclick="submitSignup()" data-i18n="submitApp"></button>
+        <p style="font-size:11.5px; color:var(--label-2); margin-top:12px; text-align:center; font-weight:500;" data-i18n="signupNote"></p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ CUSTOMER DASHBOARD ============ -->
+<div class="view" id="view-customer">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="custDashTitle"></h2></div>
+      <div class="menu-grid" style="margin-bottom:22px;">
+        <div class="menu-item"><span class="em">📋</span><span data-i18n="myRequests"></span></div>
+        <div class="menu-item"><span class="em">❤️</span><span data-i18n="favorites"></span></div>
+        <div class="menu-item"><span class="em">💬</span><span data-i18n="messages"></span></div>
+        <div class="menu-item"><span class="em">📦</span><span data-i18n="myOrders"></span></div>
+        <div class="menu-item"><span class="em">💰</span><span data-i18n="quotes"></span></div>
+        <div class="menu-item"><span class="em">📍</span><span data-i18n="appointments"></span></div>
+      </div>
+      <div class="panel">
+        <h3 data-i18n="myRequests"></h3>
+        <div id="customerRequests"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ SELLER DASHBOARD ============ -->
+<div class="view" id="view-seller">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="sellerDashTitle"></h2></div>
+      <div class="kpi-grid" id="sellerKpi"></div>
+      <div class="panel">
+        <h3 data-i18n="revenue7d"></h3>
+        <div class="bar-chart" id="sellerChart"></div>
+      </div>
+      <div class="panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <h3 style="margin:0;" data-i18n="newLeads"></h3>
+          <span style="font-size:11px; color:var(--label-2); font-weight:600;" data-i18n="unlockHint"></span>
+        </div>
+        <div id="sellerLeads"></div>
+      </div>
+      <div class="panel">
+        <h3 data-i18n="sellerMenuTitle"></h3>
+        <div class="menu-grid">
+          <div class="menu-item"><span class="em">📦</span><span data-i18n="mProducts"></span></div>
+          <div class="menu-item"><span class="em">🎯</span><span data-i18n="mLeads"></span></div>
+          <div class="menu-item"><span class="em">💬</span><span data-i18n="messages"></span></div>
+          <div class="menu-item"><span class="em">📄</span><span data-i18n="quotes"></span></div>
+          <div class="menu-item"><span class="em">👥</span><span data-i18n="mCustomers"></span></div>
+          <div class="menu-item"><span class="em">📢</span><span data-i18n="mAds"></span></div>
+          <div class="menu-item"><span class="em">💳</span><span data-i18n="mWallet"></span></div>
+          <div class="menu-item"><span class="em">⭐</span><span data-i18n="mMembership"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ ADMIN BACK OFFICE ============ -->
+<div class="view" id="view-admin">
+  <div class="bo-overlay" id="boOverlay" onclick="boToggleSidebar(false)"></div>
+  <div class="bo-shell">
+    <aside class="bo-sidebar" id="boSidebar">
+      <div class="bo-brand"><div class="brand-mark">☀️</div>HAPPY MARKET <span style="font-weight:600; color:var(--label-2); font-size:11px;">— Back Office</span></div>
+      <div id="boNavContainer"></div>
+    </aside>
+    <main class="bo-main">
+      <div class="bo-topbar">
+        <button class="icon-btn bo-mobile-toggle" onclick="boToggleSidebar(true)">☰</button>
+        <h2 id="boTitle"></h2>
+        <button class="ghost-btn" onclick="go('home')" data-i18n="boExit"></button>
+      </div>
+      <div id="boContent"></div>
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="brand" style="color:#fff; margin-bottom:10px;"><div class="brand-mark">☀️</div>HAPPY MARKET</div>
+      <p data-i18n="footerDesc"></p>
+    </div>
+    <div><h4 data-i18n="footerBrands"></h4>
+      <p>HAPPYSOLAR</p><p>HAPPYDEAL</p><p>HAPPYHOME</p><p>HAPPY AUTO</p><p>HAPPY SERVICE</p>
+    </div>
+    <div><h4 data-i18n="footerCompany"></h4>
+      <a data-i18n="footerAbout"></a><a data-i18n="footerContact"></a><a data-i18n="becomeSeller"></a>
+    </div>
+    <div><h4 data-i18n="footerLegal"></h4>
+      <a data-i18n="footerTerms"></a><a data-i18n="footerPrivacy"></a><a data-i18n="footerRefund"></a>
+    </div>
+  </div>
+</footer>
+
+<div class="bottom-nav">
+  <button class="active" data-view="home" onclick="go('home')"><span class="bn-em">🏠</span><span data-i18n="navHome"></span></button>
+  <button data-view="marketplace" onclick="go('marketplace')"><span class="bn-em">🔍</span><span data-i18n="bnSearch"></span></button>
+  <button data-view="ai-match" onclick="go('ai-match')"><span class="bn-em">✨</span><span data-i18n="bnRequests"></span></button>
+  <button data-view="customer" onclick="go('customer')"><span class="bn-em">💬</span><span data-i18n="messages"></span></button>
+  <button data-view="seller" onclick="go('seller')"><span class="bn-em">👤</span><span data-i18n="bnProfile"></span></button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- Hidden static forms so Netlify detects and registers them at deploy time.
+     Real submissions are sent via JS fetch() — see submitToNetlify() below. -->
+<form name="happymarket-seller-signup" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="bizName" /><input type="text" name="categories" /><input type="text" name="phone" /><input type="text" name="province" /><input name="bot-field" />
+</form>
+<form name="happymarket-ai-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="category" /><input type="text" name="province" /><input type="text" name="budget" /><input type="text" name="battery" /><input type="text" name="level" /><input name="bot-field" />
+</form>
+
+<script>
+/* ============ i18n dictionary ============ */
+const T = {
+th:{
+  demoBanner:"เดโมแอปพลิเคชัน HAPPY MARKET — ข้อมูลทั้งหมดเป็นข้อมูลจำลอง ยังไม่ใช่ธุรกรรมจริง",
+  tagline:"ค้นหา เปรียบเทียบ ติดต่อ ซื้อ/ใช้บริการ",
+  navHome:"หน้าแรก", navMarket:"มาร์เก็ตเพลส", navAI:"AI ช่วยหา", navMy:"บัญชีของฉัน", navSeller:"ร้านค้า/ผู้ขาย", navAdmin:"แอดมิน",
+  becomeSeller:"สมัครเป็นผู้ขาย",
+  heroTitle:"ต้องการอะไรวันนี้?",
+  heroSub:"แพลตฟอร์มรวมคนที่ต้องการซื้อ กับคนที่ต้องการขาย และผู้ให้บริการ ในที่เดียว",
+  searchPlaceholder:"ค้นหาสินค้า บริการ บ้าน รถ Solar หรือดีลใกล้คุณ...",
+  searchBtn:"ค้นหา",
+  aiCta:"ให้ AI ช่วยหา", heroHint:"บอกเราว่ากำลังหาอะไร แล้วให้ HAPPY AI จัดการที่เหลือ",
+  catTitle:"หมวดหมู่ยอดนิยม", dealsTitle:"🔥 ดีลประจำวัน", seeAll:"ดูทั้งหมด",
+  verifiedTitle:"⭐ ผู้ขายที่ผ่านการยืนยัน",
+  howTitle:"HAPPY MARKET ทำงานอย่างไร",
+  sellerCtaTitle:"ขยายธุรกิจของคุณกับ HAPPY MARKET",
+  sellerCtaSub:"เข้าถึงลูกค้าที่ต้องการจริง รับ Lead คุณภาพ พร้อมระบบจัดการร้านครบวงจร",
+  aiMatchTitle:"HAPPY AI MATCH",
+  back:"ย้อนกลับ", next:"ถัดไป",
+  signupTitle:"สมัครเป็นผู้ขาย / ผู้ให้บริการ",
+  fldBizName:"ชื่อร้าน/บริษัท", fldBizNamePh:"เช่น HAPPYSOLAR สาขาสมุทรสาคร",
+  fldCategory:"หมวดหมู่ที่ให้บริการ",
+  fldPhone:"เบอร์โทรศัพท์", fldPhonePh:"08X-XXX-XXXX",
+  fldProvince:"จังหวัด", fldProvincePh:"เช่น กรุงเทพมหานคร",
+  submitApp:"ส่งใบสมัคร", signupNote:"ทีมงานจะตรวจสอบและติดต่อกลับภายใน 1-2 วันทำการ",
+  custDashTitle:"บัญชีของฉัน",
+  myRequests:"คำขอของฉัน", favorites:"รายการโปรด", messages:"ข้อความ", myOrders:"คำสั่งซื้อ", quotes:"ใบเสนอราคา", appointments:"นัดหมาย",
+  sellerDashTitle:"แดชบอร์ดผู้ขาย",
+  revenue7d:"รายได้ 7 วันล่าสุด", newLeads:"Lead ใหม่", unlockHint:"ปลดล็อกเพื่อดูข้อมูลติดต่อ",
+  sellerMenuTitle:"เมนูจัดการร้าน",
+  mProducts:"สินค้า/บริการ", mLeads:"Lead", mCustomers:"ลูกค้า", mAds:"โฆษณา", mWallet:"กระเป๋าเงิน", mMembership:"สมาชิก",
+  boExit:"← ออกจากระบบหลังบ้าน",
+  boDashboard:"ภาพรวม", boUsers:"ผู้ใช้งาน", boSellers:"ผู้ขาย", boLeads:"Lead", boOrders:"คำสั่งซื้อ",
+  boPayments:"การเงิน/กระเป๋าเงิน", boCommission:"คอมมิชชั่น", boMembership:"แพ็กเกจสมาชิก", boAdvertising:"โฆษณา",
+  boReports:"รายงาน", boSettings:"ตั้งค่าระบบ", boTranslations:"ภาษา",
+  boGroupOverview:"ภาพรวม", boGroupPeople:"บุคคล", boGroupBiz:"ธุรกิจ", boGroupSystem:"ระบบ",
+  revenueBreakdown:"รายได้แยกตามประเภท",
+  colName:"ชื่อ", colStatus:"สถานะ", colDate:"วันที่", colValue:"มูลค่า", colContact:"ติดต่อ", colCategory:"หมวดหมู่", colProvince:"จังหวัด",
+  setLeadPrice:"ราคา Lead มาตรฐาน", setLeadPriceSub:"ราคาต่อ 1 Lead ทั่วไป",
+  setLeadPriceHQ:"ราคา Lead คุณภาพสูง", setLeadPriceHQSub:"Lead ที่มีงบประมาณและรายละเอียดชัดเจน",
+  setCommission:"อัตราคอมมิชชั่นเฉลี่ย", setCommissionSub:"คำนวณจากมูลค่าปิดการขาย",
+  setReferral:"รางวัลแนะนำเพื่อน", setReferralSub:"ต่อการแนะนำที่สำเร็จ 1 ครั้ง",
+  setAutoVerify:"อนุมัติผู้ขายอัตโนมัติ", setAutoVerifySub:"ปิดไว้เพื่อให้แอดมินตรวจสอบเอกสารก่อนทุกครั้ง",
+  setMaintenance:"โหมดปิดปรับปรุงระบบ", setMaintenanceSub:"ผู้ใช้ทั่วไปจะเห็นหน้าแจ้งปิดปรับปรุงชั่วคราว",
+  saveSettings:"บันทึกการตั้งค่า", savedToast:"บันทึกการตั้งค่าเรียบร้อย",
+  footerDesc:"แพลตฟอร์มมาร์เก็ตเพลสที่รวมสินค้า บริการ และผู้ให้บริการไว้ในที่เดียว ค้นหา เปรียบเทียบ และติดต่อได้ง่ายกว่าที่เคย",
+  footerBrands:"แบรนด์ในเครือ", footerCompany:"บริษัท", footerAbout:"เกี่ยวกับเรา", footerContact:"ติดต่อเรา",
+  footerLegal:"กฎหมาย", footerTerms:"ข้อตกลงการใช้งาน", footerPrivacy:"นโยบายความเป็นส่วนตัว", footerRefund:"นโยบายการคืนเงิน",
+  bnSearch:"ค้นหา", bnRequests:"AI ช่วยหา", bnProfile:"ร้านค้า",
+  aiCategoryQ:"คุณกำลังมองหาอะไร?",
+  aiProvinceQ:"อยู่จังหวัดไหน?", aiProvincePh:"พิมพ์ชื่อจังหวัด",
+  aiBudgetQ:"งบประมาณโดยประมาณ (บาท)", aiBudgetPh:"เช่น 150000",
+  aiNeedBattery:"ต้องการแบตเตอรี่สำรองไฟด้วยหรือไม่?", yes:"ต้องการ", no:"ไม่ต้องการ",
+  aiResultTitle:"คำขอของคุณพร้อมส่งแล้ว", aiResultCategory:"หมวดหมู่", aiResultProvince:"จังหวัด", aiResultBudget:"งบประมาณ",
+  aiResultBattery:"แบตเตอรี่", aiResultLevel:"ระดับ Lead", aiSendBtn:"ส่งคำขอไปยังผู้ขาย", aiSentToast:"ส่งคำขอเรียบร้อย! ผู้ขายที่เกี่ยวข้อง 3 รายจะติดต่อกลับเร็วๆ นี้",
+  standard:"มาตรฐาน", highQ:"คุณภาพสูง",
+  reqStatusNew:"รอผู้ขายเสนอราคา", reqStatusQuoted:"ได้รับใบเสนอราคาแล้ว",
+  statusActive:"ใช้งาน", statusPending:"รอตรวจสอบ", statusSuspended:"ระงับ", statusVerified:"ยืนยันแล้ว",
+  planFree:"ฟรี", planBasic:"เบสิก", planPro:"โปร", planBusiness:"ธุรกิจ",
+  planFreeDesc:["ลงสินค้า 5 รายการ","รับ Lead จำกัด"], planBasicDesc:["ลงสินค้า 20 รายการ","รับ Lead มาตรฐาน","แชทกับลูกค้า"],
+  planProDesc:["ลงสินค้าไม่จำกัด","รับ Lead ทุกระดับ","Analytics","ติดหน้าแรก"], planBusinessDesc:["Priority Lead","ตำแหน่งพรีเมียม","Analytics ขั้นสูง","รองรับ API"],
+},
+en:{
+  demoBanner:"HAPPY MARKET demo application — all data shown is sample data, not a real transaction.",
+  tagline:"Find it. Compare it. Get it.",
+  navHome:"Home", navMarket:"Marketplace", navAI:"AI Match", navMy:"My Account", navSeller:"Seller", navAdmin:"Admin",
+  becomeSeller:"Become a Seller",
+  heroTitle:"What do you need today?",
+  heroSub:"The platform that connects buyers, sellers, and service providers — in one place.",
+  searchPlaceholder:"Search products, services, homes, cars, Solar or deals nearby...",
+  searchBtn:"Search",
+  aiCta:"Let AI find it for you", heroHint:"Tell us what you're looking for and HAPPY AI handles the rest",
+  catTitle:"Popular Categories", dealsTitle:"🔥 Today's Deals", seeAll:"See all",
+  verifiedTitle:"⭐ Verified Sellers",
+  howTitle:"How HAPPY MARKET works",
+  sellerCtaTitle:"Grow your business with HAPPY MARKET",
+  sellerCtaSub:"Reach real buyers, get quality leads, and manage your shop with one complete toolkit.",
+  aiMatchTitle:"HAPPY AI MATCH",
+  back:"Back", next:"Next",
+  signupTitle:"Become a Seller / Service Provider",
+  fldBizName:"Shop / Company name", fldBizNamePh:"e.g. HAPPYSOLAR Samut Sakhon Branch",
+  fldCategory:"Category you offer",
+  fldPhone:"Phone number", fldPhonePh:"08X-XXX-XXXX",
+  fldProvince:"Province", fldProvincePh:"e.g. Bangkok",
+  submitApp:"Submit application", signupNote:"Our team will review and contact you within 1-2 business days",
+  custDashTitle:"My Account",
+  myRequests:"My Requests", favorites:"Favorites", messages:"Messages", myOrders:"My Orders", quotes:"Quotes", appointments:"Appointments",
+  sellerDashTitle:"Seller Dashboard",
+  revenue7d:"Revenue - Last 7 Days", newLeads:"New Leads", unlockHint:"Unlock to view contact details",
+  sellerMenuTitle:"Shop Management",
+  mProducts:"Products/Services", mLeads:"Leads", mCustomers:"Customers", mAds:"Advertising", mWallet:"Wallet", mMembership:"Membership",
+  boExit:"← Exit back office",
+  boDashboard:"Overview", boUsers:"Users", boSellers:"Sellers", boLeads:"Leads", boOrders:"Orders",
+  boPayments:"Payments & Wallet", boCommission:"Commission", boMembership:"Membership Plans", boAdvertising:"Advertising",
+  boReports:"Reports", boSettings:"System Settings", boTranslations:"Translations",
+  boGroupOverview:"Overview", boGroupPeople:"People", boGroupBiz:"Business", boGroupSystem:"System",
+  revenueBreakdown:"Revenue Breakdown",
+  colName:"Name", colStatus:"Status", colDate:"Date", colValue:"Value", colContact:"Contact", colCategory:"Category", colProvince:"Province",
+  setLeadPrice:"Standard Lead price", setLeadPriceSub:"Price per standard lead",
+  setLeadPriceHQ:"High-quality Lead price", setLeadPriceHQSub:"Leads with clear budget and detailed requirements",
+  setCommission:"Average commission rate", setCommissionSub:"Calculated on closed deal value",
+  setReferral:"Referral reward", setReferralSub:"Per successful referral",
+  setAutoVerify:"Auto-approve sellers", setAutoVerifySub:"Keep off so admin reviews documents every time",
+  setMaintenance:"Maintenance mode", setMaintenanceSub:"Shows a temporary maintenance notice to visitors",
+  saveSettings:"Save settings", savedToast:"Settings saved",
+  footerDesc:"The marketplace platform that brings products, services, and providers together in one place. Search, compare, and connect easier than ever.",
+  footerBrands:"Our Brands", footerCompany:"Company", footerAbout:"About Us", footerContact:"Contact",
+  footerLegal:"Legal", footerTerms:"Terms of Service", footerPrivacy:"Privacy Policy", footerRefund:"Refund Policy",
+  bnSearch:"Search", bnRequests:"AI Match", bnProfile:"Shop",
+  aiCategoryQ:"What are you looking for?",
+  aiProvinceQ:"Which province / area are you in?", aiProvincePh:"Type province name",
+  aiBudgetQ:"Approximate budget (THB)", aiBudgetPh:"e.g. 150000",
+  aiNeedBattery:"Do you also need a backup battery?", yes:"Yes", no:"No",
+  aiResultTitle:"Your request is ready to send", aiResultCategory:"Category", aiResultProvince:"Province", aiResultBudget:"Budget",
+  aiResultBattery:"Battery", aiResultLevel:"Lead Level", aiSendBtn:"Send request to sellers", aiSentToast:"Request sent! 3 matching sellers will reach out shortly",
+  standard:"Standard", highQ:"High Quality",
+  reqStatusNew:"Awaiting quotes", reqStatusQuoted:"Quote received",
+  statusActive:"Active", statusPending:"Pending", statusSuspended:"Suspended", statusVerified:"Verified",
+  planFree:"Free", planBasic:"Basic", planPro:"Pro", planBusiness:"Business",
+  planFreeDesc:["5 listings","Limited leads"], planBasicDesc:["20 listings","Standard leads","Customer chat"],
+  planProDesc:["Unlimited listings","All lead tiers","Analytics","Homepage featuring"], planBusinessDesc:["Priority leads","Premium placement","Advanced analytics","API access"],
+},
+zh:{
+  demoBanner:"HAPPY MARKET 演示应用 — 所有数据均为示例数据，非真实交易。",
+  tagline:"查找・比较・获取",
+  navHome:"首页", navMarket:"市场", navAI:"AI智能匹配", navMy:"我的账户", navSeller:"卖家", navAdmin:"管理员",
+  becomeSeller:"成为卖家",
+  heroTitle:"今天需要什么？",
+  heroSub:"一个平台，连接买家、卖家与服务提供商。",
+  searchPlaceholder:"搜索产品、服务、房屋、汽车、太阳能或附近优惠...",
+  searchBtn:"搜索",
+  aiCta:"让AI帮你寻找", heroHint:"告诉我们您在寻找什么，HAPPY AI 会处理其余部分",
+  catTitle:"热门分类", dealsTitle:"🔥 今日优惠", seeAll:"查看全部",
+  verifiedTitle:"⭐ 认证卖家",
+  howTitle:"HAPPY MARKET 如何运作",
+  sellerCtaTitle:"与 HAPPY MARKET 一起发展您的业务",
+  sellerCtaSub:"触达真实买家，获取优质线索，使用一套完整的店铺管理工具。",
+  aiMatchTitle:"HAPPY AI MATCH",
+  back:"返回", next:"下一步",
+  signupTitle:"成为卖家/服务提供商",
+  fldBizName:"店铺/公司名称", fldBizNamePh:"例如 HAPPYSOLAR 龙仔厝分店",
+  fldCategory:"您提供的类别",
+  fldPhone:"电话号码", fldPhonePh:"08X-XXX-XXXX",
+  fldProvince:"府/地区", fldProvincePh:"例如 曼谷",
+  submitApp:"提交申请", signupNote:"我们的团队将在1-2个工作日内审核并联系您",
+  custDashTitle:"我的账户",
+  myRequests:"我的请求", favorites:"收藏", messages:"消息", myOrders:"我的订单", quotes:"报价", appointments:"预约",
+  sellerDashTitle:"卖家仪表盘",
+  revenue7d:"过去7天收入", newLeads:"新线索", unlockHint:"解锁以查看联系方式",
+  sellerMenuTitle:"店铺管理",
+  mProducts:"产品/服务", mLeads:"线索", mCustomers:"客户", mAds:"广告", mWallet:"钱包", mMembership:"会员",
+  boExit:"← 退出后台",
+  boDashboard:"总览", boUsers:"用户", boSellers:"卖家", boLeads:"线索", boOrders:"订单",
+  boPayments:"支付与钱包", boCommission:"佣金", boMembership:"会员套餐", boAdvertising:"广告",
+  boReports:"报表", boSettings:"系统设置", boTranslations:"语言翻译",
+  boGroupOverview:"总览", boGroupPeople:"用户管理", boGroupBiz:"业务管理", boGroupSystem:"系统",
+  revenueBreakdown:"收入明细",
+  colName:"名称", colStatus:"状态", colDate:"日期", colValue:"金额", colContact:"联系方式", colCategory:"类别", colProvince:"地区",
+  setLeadPrice:"标准线索价格", setLeadPriceSub:"每条标准线索的价格",
+  setLeadPriceHQ:"高质量线索价格", setLeadPriceHQSub:"预算和需求明确的线索",
+  setCommission:"平均佣金比例", setCommissionSub:"按成交金额计算",
+  setReferral:"推荐奖励", setReferralSub:"每成功推荐一次",
+  setAutoVerify:"自动批准卖家", setAutoVerifySub:"保持关闭以便管理员每次审核文件",
+  setMaintenance:"系统维护模式", setMaintenanceSub:"访客将看到临时维护提示",
+  saveSettings:"保存设置", savedToast:"设置已保存",
+  footerDesc:"一个将产品、服务与供应商汇聚一处的市场平台。搜索、比较、联系，从未如此简单。",
+  footerBrands:"旗下品牌", footerCompany:"公司", footerAbout:"关于我们", footerContact:"联系我们",
+  footerLegal:"法律条款", footerTerms:"服务条款", footerPrivacy:"隐私政策", footerRefund:"退款政策",
+  bnSearch:"搜索", bnRequests:"AI匹配", bnProfile:"店铺",
+  aiCategoryQ:"您在寻找什么？",
+  aiProvinceQ:"您在哪个府/地区？", aiProvincePh:"输入地区名称",
+  aiBudgetQ:"大概预算（泰铢）", aiBudgetPh:"例如 150000",
+  aiNeedBattery:"是否也需要备用电池？", yes:"需要", no:"不需要",
+  aiResultTitle:"您的请求已准备发送", aiResultCategory:"类别", aiResultProvince:"地区", aiResultBudget:"预算",
+  aiResultBattery:"电池", aiResultLevel:"线索等级", aiSendBtn:"将请求发送给卖家", aiSentToast:"请求已发送！3位匹配卖家将尽快与您联系",
+  standard:"标准", highQ:"高质量",
+  reqStatusNew:"等待报价", reqStatusQuoted:"已收到报价",
+  statusActive:"正常", statusPending:"待审核", statusSuspended:"已暂停", statusVerified:"已认证",
+  planFree:"免费", planBasic:"基础", planPro:"专业", planBusiness:"商业",
+  planFreeDesc:["5个商品","有限线索"], planBasicDesc:["20个商品","标准线索","客户聊天"],
+  planProDesc:["无限商品","全部线索等级","数据分析","首页推荐"], planBusinessDesc:["优先线索","高级展示位","高级数据分析","API接入"],
+}
+};
+
+/* ===== Custom icon set (flat, layered, two-tone — replaces emoji) ===== */
+const ICONS = [
+/*0 Solar*/ `<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="19" r="9" fill="#fff"/><g stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M24 4v3.2M24 34v0M9.5 19h3.2M35.3 19h3.2M13.8 8.8l2.3 2.3M35.9 8.8l-2.3 2.3"/></g><g fill="#fff" fill-opacity=".55"><rect x="8" y="32" width="32" height="10" rx="2"/><path d="M8 34.2h32M8 39.8h32" stroke="#0009" stroke-width=".8"/><path d="M16 32v10M24 32v10M32 32v10" stroke="#0009" stroke-width=".8"/></g></svg>`,
+/*1 Battery*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="9" y="12" width="26" height="26" rx="5" fill="#fff"/><rect x="16" y="6" width="12" height="7" rx="2" fill="#fff" fill-opacity=".55"/><rect x="13" y="27" width="20" height="7" rx="1.5" fill="#0A84FF" fill-opacity=".85"/><rect x="13" y="19" width="20" height="5.5" rx="1.5" fill="#0A84FF" fill-opacity=".5"/><path d="M23 15l-5.5 8.5H23l-1.5 9.5 7-10.5h-5.5L25 15z" fill="#FFD60A"/></svg>`,
+/*2 Home*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 6L6 20v2.5h4V41h11V29h6v12h11V22.5h4V20L24 6z" fill="#fff"/><rect x="20" y="12.5" width="8" height="8" rx="1.5" fill="#fff" fill-opacity=".55"/><rect x="14" y="30" width="6" height="6" rx="1" fill="#5E5CE6" fill-opacity=".7"/></svg>`,
+/*3 Auto*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M9 29l3.3-9.6A5 5 0 0117 16h14a5 5 0 014.7 3.4L39 29" stroke="#fff" stroke-width="2.6" stroke-linejoin="round" fill="none"/><rect x="6" y="27" width="36" height="10" rx="4" fill="#fff"/><circle cx="15" cy="37" r="4.4" fill="#0B1220"/><circle cx="15" cy="37" r="1.8" fill="#fff"/><circle cx="33" cy="37" r="4.4" fill="#0B1220"/><circle cx="33" cy="37" r="1.8" fill="#fff"/><rect x="13" y="20.5" width="22" height="6" rx="1.5" fill="#fff" fill-opacity=".5"/></svg>`,
+/*4 Products*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M12 16h24l-2 24a3 3 0 01-3 2.7H17a3 3 0 01-3-2.7L12 16z" fill="#fff"/><path d="M17 16v-2a7 7 0 0114 0v2" stroke="#fff" stroke-width="2.8" fill="none"/><rect x="12" y="16" width="24" height="4.5" fill="#0009" fill-opacity=".12"/></svg>`,
+/*5 Services*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M27 21l10.5 10.5a4 4 0 01-5.6 5.6L21.4 26.6" stroke="#fff" stroke-width="3.4" stroke-linecap="round" fill="none"/><path d="M30 12a7 7 0 00-9 9L9 33l4 4 12-12a7 7 0 009-9l-4.6 4.6-4-4z" fill="#fff" fill-opacity=".9"/></svg>`,
+/*6 Business*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="10" width="20" height="30" rx="1.5" fill="#fff"/><rect x="28" y="18" width="12" height="22" rx="1.5" fill="#fff" fill-opacity=".6"/><g fill="#0009" fill-opacity=".2"><rect x="12" y="15" width="4" height="4"/><rect x="20" y="15" width="4" height="4"/><rect x="12" y="23" width="4" height="4"/><rect x="20" y="23" width="4" height="4"/><rect x="12" y="31" width="4" height="4"/><rect x="20" y="31" width="4" height="4"/></g><rect x="15" y="34" width="6" height="6" fill="#5856D6"/></svg>`,
+/*7 Professional*/ `<svg viewBox="0 0 48 48" fill="none"><rect x="8" y="18" width="32" height="20" rx="3" fill="#fff"/><path d="M18 18v-3a3 3 0 013-3h6a3 3 0 013 3v3" stroke="#fff" stroke-width="2.8" fill="none"/><rect x="8" y="26" width="32" height="4" fill="#0009" fill-opacity=".15"/><rect x="21.5" y="25" width="5" height="5" rx="1" fill="#0A84FF"/></svg>`,
+/*8 Deals*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M42 24.2L23.8 42.4a3 3 0 01-4.2 0L6 28.8a3 3 0 010-4.2L24.2 6.4A3 3 0 0126.3 5.5H38a4 4 0 014 4v11.7a3 3 0 01-.9 2.1z" fill="#fff"/><circle cx="32" cy="15" r="3.4" fill="#FF375F"/></svg>`,
+/*9 Near Me*/ `<svg viewBox="0 0 48 48" fill="none"><path d="M24 5c-7.7 0-14 6.1-14 13.7C10 29 24 43 24 43s14-14 14-24.3C38 11.1 31.7 5 24 5z" fill="#fff"/><circle cx="24" cy="18.5" r="5.4" fill="#0A84FF"/></svg>`,
+];
+function iconTile(i, size){ return `<span style="display:inline-flex; width:${size}px; height:${size}px;">${ICONS[i]}</span>`; }
+
+const CATS = [
+  {em:"☀️", color:"linear-gradient(135deg,#FF9F0A,#FF375F)", th:"พลังงานแสงอาทิตย์", en:"Solar & Energy", zh:"太阳能"},
+  {em:"🔋", color:"linear-gradient(135deg,#30D158,#40C8C0)", th:"แบตเตอรี่", en:"Battery", zh:"电池"},
+  {em:"🏠", color:"linear-gradient(135deg,#5E5CE6,#0A84FF)", th:"บ้านและที่ดิน", en:"Home & Land", zh:"房产"},
+  {em:"🚗", color:"linear-gradient(135deg,#0A84FF,#40C8C0)", th:"รถยนต์", en:"Auto", zh:"汽车"},
+  {em:"🛒", color:"linear-gradient(135deg,#FF9F0A,#FFD60A)", th:"สินค้า", en:"Products", zh:"商品"},
+  {em:"🔧", color:"linear-gradient(135deg,#8E8E93,#48484A)", th:"ช่างและบริการ", en:"Services", zh:"服务"},
+  {em:"🏢", color:"linear-gradient(135deg,#5856D6,#5E5CE6)", th:"ธุรกิจ", en:"Business", zh:"商业"},
+  {em:"💼", color:"linear-gradient(135deg,#0A84FF,#5856D6)", th:"งานมืออาชีพ", en:"Professional", zh:"专业服务"},
+  {em:"🔥", color:"linear-gradient(135deg,#FF375F,#FF9F0A)", th:"ดีล", en:"Deals", zh:"优惠"},
+  {em:"📍", color:"linear-gradient(135deg,#30D158,#0A84FF)", th:"บริการใกล้ฉัน", en:"Near Me", zh:"附近服务"},
+];
+
+const DEALS = [
+  {cat:1, grad:"linear-gradient(135deg,#30D158,#40C8C0)", was:59000, now:45900, disc:"22%", th:"แบตเตอรี่ LiFePO4 16kWh", en:"LiFePO4 Battery 16kWh", zh:"磷酸铁锂电池 16kWh"},
+  {cat:0, grad:"linear-gradient(135deg,#FF9F0A,#FF375F)", was:120000, now:99000, disc:"18%", th:"ชุดโซลาร์ 5kW พร้อมติดตั้ง", en:"5kW Solar Kit + Install", zh:"5kW太阳能套装+安装"},
+  {cat:3, grad:"linear-gradient(135deg,#0A84FF,#5E5CE6)", was:35000, now:27500, disc:"21%", th:"EV Charger 7kW", en:"EV Charger 7kW", zh:"电动车充电桩 7kW"},
+  {cat:5, grad:"linear-gradient(135deg,#8E8E93,#48484A)", was:8500, now:6900, disc:"19%", th:"ระบบดับเพลิงอัตโนมัติ", en:"Auto Fire Suppression Kit", zh:"自动灭火系统"},
+  {cat:5, grad:"linear-gradient(135deg,#5856D6,#0A84FF)", was:12000, now:8900, disc:"26%", th:"กล้องวงจรปิด Solar 4G", en:"Solar 4G CCTV Camera", zh:"太阳能4G监控摄像头"},
+];
+
+const PRODUCTS = [
+  {em:"☀️", grad:"linear-gradient(135deg,#FF9F0A,#FF375F)", cat:0, verified:true, price:99000, was:120000, rating:4.9, loc:{th:"สมุทรสาคร", en:"Samut Sakhon", zh:"龙仔厝"},
+   th:"ชุดโซลาร์รูฟท็อป 5kW HAPPYSOLAR", en:"HAPPYSOLAR Rooftop Solar 5kW", zh:"HAPPYSOLAR屋顶太阳能5kW"},
+  {em:"🔋", grad:"linear-gradient(135deg,#30D158,#40C8C0)", cat:1, verified:true, price:45900, was:59000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+   th:"แบตเตอรี่ LiFePO4 16 kWh", en:"LiFePO4 Battery 16 kWh", zh:"磷酸铁锂电池 16 kWh"},
+  {em:"🏠", grad:"linear-gradient(135deg,#5E5CE6,#0A84FF)", cat:2, verified:false, price:2890000, was:null, rating:4.6, loc:{th:"นนทบุรี", en:"Nonthaburi", zh:"暖武里"},
+   th:"บ้านเดี่ยว 3 ห้องนอน ติดโซลาร์แล้ว", en:"3BR House, Solar Installed", zh:"三居室独立屋，已安装太阳能"},
+  {em:"🚗", grad:"linear-gradient(135deg,#0A84FF,#40C8C0)", cat:3, verified:true, price:659000, was:null, rating:4.7, loc:{th:"ชลบุรี", en:"Chonburi", zh:"春武里"},
+   th:"รถ EV มือสอง ปี 2023", en:"Used EV, Year 2023", zh:"2023年二手电动车"},
+  {em:"🔧", grad:"linear-gradient(135deg,#8E8E93,#48484A)", cat:5, verified:true, price:1200, was:null, rating:5.0, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+   th:"ช่างไฟฟ้าใกล้คุณ (เหมาจ่าย/ครั้ง)", en:"Electrician Near You (per visit)", zh:"附近电工（按次收费）"},
+  {em:"📷", grad:"linear-gradient(135deg,#5856D6,#0A84FF)", cat:4, verified:false, price:8900, was:12000, rating:4.5, loc:{th:"เชียงใหม่", en:"Chiang Mai", zh:"清迈"},
+   th:"กล้องวงจรปิด Solar 4G", en:"Solar 4G CCTV Camera", zh:"太阳能4G监控摄像头"},
+  {em:"🏢", grad:"linear-gradient(135deg,#5856D6,#5E5CE6)", cat:6, verified:true, price:15000, was:null, rating:4.9, loc:{th:"ระยอง", en:"Rayong", zh:"罗勇"},
+   th:"ที่ปรึกษาโซลาร์สำหรับโรงงาน (BOQ)", en:"Industrial Solar Consulting (BOQ)", zh:"工厂太阳能咨询（BOQ）"},
+  {em:"🔌", grad:"linear-gradient(135deg,#0A84FF,#5E5CE6)", cat:0, verified:true, price:27500, was:35000, rating:4.8, loc:{th:"กรุงเทพฯ", en:"Bangkok", zh:"曼谷"},
+   th:"เครื่องชาร์จรถ EV 7kW", en:"EV Charger 7kW", zh:"电动车充电桩 7kW"},
+];
+
+/* ===== Back office mock datasets ===== */
+const BO_USERS = [
+  {name:"Somchai Rattana", em:"🧑", phone:"081-234-5678", joined:"2026-06-02", status:"active"},
+  {name:"Napat Suwan", em:"👩", phone:"089-555-1122", joined:"2026-07-14", status:"active"},
+  {name:"Kittipong Lee", em:"🧑", phone:"062-871-4400", joined:"2026-08-01", status:"pending"},
+  {name:"Aroonrat Chai", em:"👩", phone:"095-320-7781", joined:"2026-08-20", status:"active"},
+  {name:"Weerapong T.", em:"🧑", phone:"091-004-2231", joined:"2026-09-05", status:"suspended"},
+];
+const BO_SELLERS = [
+  {name:"HAPPYSOLAR สมุทรสาคร", em:"☀️", cat:"Solar & Energy", province:"Samut Sakhon", status:"verified", rating:4.9},
+  {name:"GreenVolt Battery Co.", em:"🔋", cat:"Battery", province:"Bangkok", status:"verified", rating:4.8},
+  {name:"ช่างเอก การไฟฟ้า", em:"🔧", cat:"Services", province:"Bangkok", status:"pending", rating:0},
+  {name:"บ้านสุขใจ พร็อพเพอร์ตี้", em:"🏠", cat:"Home & Land", province:"Nonthaburi", status:"verified", rating:4.6},
+  {name:"EV Motors Chonburi", em:"🚗", cat:"Auto", province:"Chonburi", status:"suspended", rating:3.2},
+];
+const BO_LEADS = [
+  {name:"Solar 5kW Request", cat:"Solar & Energy", province:"Bangkok", value:1000, status:"active"},
+  {name:"Battery 16kWh Request", cat:"Battery", province:"Chonburi", value:500, status:"active"},
+  {name:"Factory BOQ Project", cat:"Business", province:"Rayong", value:1000, status:"pending"},
+  {name:"EV Charger Install", cat:"Solar & Energy", province:"Bangkok", value:300, status:"active"},
+];
+const BO_ORDERS = [
+  {id:"HM-10245", name:"5kW Solar Kit + Install", value:99000, status:"active", date:"2026-09-15"},
+  {id:"HM-10246", name:"LiFePO4 Battery 16kWh", value:45900, status:"pending", date:"2026-09-16"},
+  {id:"HM-10247", name:"EV Charger 7kW", value:27500, status:"active", date:"2026-09-17"},
+  {id:"HM-10248", name:"Industrial Solar Consulting", value:180000, status:"suspended", date:"2026-09-12"},
+];
+const BO_ADS = [
+  {name:"HAPPYSOLAR — Homepage Banner", spend:8000, clicks:1240, status:"active"},
+  {name:"GreenVolt — Featured Product", spend:3000, clicks:410, status:"active"},
+  {name:"บ้านสุขใจ — Top Search", spend:1500, clicks:180, status:"pending"},
+];
+
+let LANG = localStorage.getItem('hm_lang') || 'th';
+let THEME = localStorage.getItem('hm_theme') || 'auto';
+
+function setLang(l){
+  LANG = l;
+  localStorage.setItem('hm_lang', l);
+  document.documentElement.lang = l;
+  document.body.classList.toggle('lang-zh', l==='zh');
+  render();
+}
+
+function toggleTheme(){
+  THEME = (THEME === 'dark') ? 'light' : (THEME === 'light' ? 'auto' : 'dark');
+  localStorage.setItem('hm_theme', THEME);
+  applyTheme();
+  showToast(THEME.toUpperCase());
+}
+function applyTheme(){
+  if(THEME === 'auto') document.documentElement.removeAttribute('data-theme');
+  else document.documentElement.setAttribute('data-theme', THEME);
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastT);
+  window._toastT = setTimeout(()=>t.classList.remove('show'), 2200);
+}
+
+function fmtMoney(n){ return '฿' + n.toLocaleString('en-US'); }
+function statusBadge(s){
+  const dict = T[LANG];
+  const map = {active:['st-active','statusActive'], pending:['st-pending','statusPending'], suspended:['st-suspended','statusSuspended'], verified:['st-verified','statusVerified']};
+  const m = map[s] || map.active;
+  return `<span class="status-badge ${m[0]}">${dict[m[1]]}</span>`;
+}
+
+function go(view){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+view).classList.add('active');
+  document.querySelectorAll('nav.top-tabs button, .bottom-nav button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.view === view);
+  });
+  window.scrollTo({top:0, behavior:'instant'});
+  if(view === 'admin'){ boGo(currentBoModule || 'dashboard'); }
+}
+
+function doSearch(){
+  const q = document.getElementById('searchInput').value;
+  go('marketplace');
+  showToast((LANG==='th'?'ค้นหา: ':LANG==='zh'?'搜索: ':'Searching: ') + (q || '...'));
+}
+
+function renderCats(){
+  document.getElementById('catGrid').innerHTML = CATS.map((c,i)=>`
+    <div class="cat-card" onclick="filterByCat(${i})">
+      <div class="emoji-tile" style="background:${c.color};">${iconTile(i,24)}</div>
+      <span>${c[LANG]}</span>
+    </div>`).join('');
+}
+
+function renderDeals(){
+  document.getElementById('dealStrip').innerHTML = DEALS.map(d=>`
+    <div class="deal-card">
+      <div class="deal-img" style="background:${d.grad};">${iconTile(d.cat,34)}</div>
+      <div class="deal-body">
+        <span class="deal-badge">-${d.disc}</span>
+        <div class="deal-title">${d[LANG]}</div>
+        <div class="deal-price"><span class="now">${fmtMoney(d.now)}</span><span class="was">${fmtMoney(d.was)}</span></div>
+      </div>
+    </div>`).join('');
+}
+
+let activeCatFilter = null;
+function filterByCat(i){ activeCatFilter = i; go('marketplace'); renderMarket(); }
+
+function renderFilters(){
+  let html = `<button class="filter-chip ${activeCatFilter===null?'active':''}" onclick="activeCatFilter=null;renderMarket()">${LANG==='th'?'ทั้งหมด':LANG==='zh'?'全部':'All'}</button>`;
+  CATS.forEach((c,i)=>{
+    html += `<button class="filter-chip ${activeCatFilter===i?'active':''}" onclick="activeCatFilter=${i};renderMarket()">${c.em} ${c[LANG]}</button>`;
+  });
+  document.getElementById('filterRow').innerHTML = html;
+}
+
+function productCard(p){
+  return `
+    <div class="p-card">
+      <div class="p-img" style="background:${p.grad};">
+        ${p.verified?`<div class="p-verified">✓ VERIFIED</div>`:''}
+        ${iconTile(p.cat,44)}
+      </div>
+      <div class="p-body">
+        <div class="p-title">${p[LANG]}</div>
+        <div class="p-meta">📍 ${p.loc[LANG]} &nbsp;·&nbsp; ⭐ ${p.rating}</div>
+        <div class="p-price"><span class="now">${fmtMoney(p.price)}</span>${p.was?`<span class="was">${fmtMoney(p.was)}</span>`:''}</div>
+        <div class="p-actions">
+          <button class="btn-secondary" onclick="showToast('${LANG==='th'?'เพิ่มในรายการโปรดแล้ว':LANG==='zh'?'已加入收藏':'Added to favorites'}')">${LANG==='th'?'สนใจ':LANG==='zh'?'关注':'Interested'}</button>
+          <button class="btn-primary" onclick="showToast('${LANG==='th'?'ส่งคำขอใบเสนอราคาแล้ว':LANG==='zh'?'已发送报价请求':'Quote requested'}')">${LANG==='th'?'ขอราคา':LANG==='zh'?'询价':'Get Quote'}</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderVerified(){
+  document.getElementById('verifiedGrid').innerHTML = PRODUCTS.filter(p=>p.verified).slice(0,4).map(productCard).join('');
+}
+
+function renderMarket(){
+  renderFilters();
+  const list = activeCatFilter===null ? PRODUCTS : PRODUCTS.filter(p=>p.cat===activeCatFilter);
+  document.getElementById('marketGrid').innerHTML = list.map(productCard).join('') ||
+    `<p style="color:var(--label-2); grid-column:1/-1;">${LANG==='th'?'ไม่พบสินค้าในหมวดนี้':LANG==='zh'?'未找到相关商品':'No listings in this category'}</p>`;
+}
+
+function renderHow(){
+  const steps = {
+    th:["เปิดเว็บ","พิมพ์สิ่งที่ต้องการ","AI ช่วยจัดหมวด","กรอกข้อมูลสั้นๆ","รับข้อเสนอ","เปรียบเทียบ & ติดต่อ"],
+    en:["Open the app","Tell us what you need","AI sorts your category","Fill a short form","Get offers","Compare & connect"],
+    zh:["打开应用","告诉我们您的需求","AI进行分类","填写简短表单","获得报价","比较并联系"]
+  }[LANG];
+  document.getElementById('howSteps').innerHTML = steps.map((s,i)=>`
+    <div class="step-card"><div class="n">${['1️⃣','2️⃣','3️⃣','4️⃣','5️⃣','6️⃣'][i]}</div><p>${s}</p></div>`).join('');
+}
+
+/* ===== Real submission helpers — Netlify Forms + LINE notify function =====
+   Works once deployed on Netlify (reuses the site's existing
+   LINE_CHANNEL_ACCESS_TOKEN / LINE_TARGET_USER_ID env vars).
+   In any other environment (e.g. a preview) these calls fail silently
+   and the UI still confirms optimistically. */
+function netlifyEncode(data){
+  return Object.keys(data).map(k => encodeURIComponent(k) + '=' + encodeURIComponent(data[k])).join('&');
+}
+function submitToNetlify(formName, fields){
+  return fetch('/', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: netlifyEncode(Object.assign({'form-name':formName}, fields))
+  }).catch(()=>{});
+}
+function notifyLine(formType, fields){
+  return fetch('/.netlify/functions/happymarket-notify', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify(Object.assign({formType}, fields))
+  }).catch(()=>{});
+}
+
+/* ===== AI Match wizard ===== */
+let aiStep = 1;
+let aiData = {cat:0, province:'', budget:'', battery:null};
+
+function renderAiStep(){
+  const dict = T[LANG];
+  document.getElementById('dot1').classList.toggle('done', aiStep>=1);
+  document.getElementById('dot2').classList.toggle('done', aiStep>=2);
+  document.getElementById('dot3').classList.toggle('done', aiStep>=3);
+  document.getElementById('aiBackBtn').style.visibility = aiStep===1 ? 'hidden' : 'visible';
+  document.getElementById('aiNextBtn').style.display = aiStep===4 ? 'none' : 'inline-block';
+
+  let html = '';
+  if(aiStep===1){
+    html += `<div class="field"><label>${dict.aiCategoryQ}</label><div class="chip-select">`;
+    CATS.forEach((c,i)=>{ html += `<div class="chip-opt ${aiData.cat===i?'sel':''}" onclick="aiData.cat=${i};renderAiStep()">${c.em} ${c[LANG]}</div>`; });
+    html += `</div></div>`;
+  } else if(aiStep===2){
+    html += `<div class="field"><label>${dict.aiProvinceQ}</label><input type="text" id="aiProvinceInput" placeholder="${dict.aiProvincePh}" value="${aiData.province}" oninput="aiData.province=this.value"></div>`;
+    html += `<div class="field"><label>${dict.aiBudgetQ}</label><input type="number" id="aiBudgetInput" placeholder="${dict.aiBudgetPh}" value="${aiData.budget}" oninput="aiData.budget=this.value"></div>`;
+  } else if(aiStep===3){
+    html += `<div class="field"><label>${dict.aiNeedBattery}</label><div class="chip-select">
+      <div class="chip-opt ${aiData.battery===true?'sel':''}" onclick="aiData.battery=true;renderAiStep()">${dict.yes}</div>
+      <div class="chip-opt ${aiData.battery===false?'sel':''}" onclick="aiData.battery=false;renderAiStep()">${dict.no}</div>
+    </div></div>`;
+  } else if(aiStep===4){
+    const level = (aiData.budget && Number(aiData.budget) >= 100000) ? dict.highQ : dict.standard;
+    html += `<div class="result-card">
+      <h3 style="margin-bottom:10px; color:var(--sys-green);">✅ ${dict.aiResultTitle}</h3>
+      <div class="result-row"><span>${dict.aiResultCategory}</span><b>${CATS[aiData.cat].em} ${CATS[aiData.cat][LANG]}</b></div>
+      <div class="result-row"><span>${dict.aiResultProvince}</span><b>${aiData.province || '—'}</b></div>
+      <div class="result-row"><span>${dict.aiResultBudget}</span><b>${aiData.budget ? fmtMoney(Number(aiData.budget)) : '—'}</b></div>
+      <div class="result-row"><span>${dict.aiResultBattery}</span><b>${aiData.battery===null?'—':(aiData.battery?dict.yes:dict.no)}</b></div>
+      <div class="result-row"><span>${dict.aiResultLevel}</span><b>${level}</b></div>
+    </div>
+    <button class="pill-btn" style="width:100%; padding:14px; margin-top:16px;" onclick="sendAiRequest()">${dict.aiSendBtn}</button>`;
+  }
+  document.getElementById('aiStepBody').innerHTML = html;
+}
+function aiNext(){ if(aiStep<4){ aiStep++; renderAiStep(); } }
+function aiBack(){ if(aiStep>1){ aiStep--; renderAiStep(); } }
+function sendAiRequest(){
+  const dict = T[LANG];
+  const level = (aiData.budget && Number(aiData.budget) >= 100000) ? dict.highQ : dict.standard;
+  const fields = {
+    category: CATS[aiData.cat].en,
+    province: aiData.province || '-',
+    budget: aiData.budget || '-',
+    battery: aiData.battery===null ? '-' : (aiData.battery ? 'Yes' : 'No'),
+    level: level
+  };
+  submitToNetlify('happymarket-ai-request', fields);
+  notifyLine('New AI Match Request', fields);
+  showToast(T[LANG].aiSentToast);
+  aiStep = 1; aiData = {cat:0, province:'', battery:null, budget:''};
+  setTimeout(()=>go('customer'), 900);
+}
+
+/* ===== Seller signup ===== */
+function renderSignupChips(){
+  document.getElementById('signupCatChips').innerHTML = CATS.map((c,i)=>
+    `<div class="chip-opt" id="sc${i}" onclick="toggleSignupChip(${i})">${c.em} ${c[LANG]}</div>`).join('');
+}
+let signupSel = new Set();
+function toggleSignupChip(i){
+  const el = document.getElementById('sc'+i);
+  if(signupSel.has(i)){ signupSel.delete(i); el.classList.remove('sel'); }
+  else { signupSel.add(i); el.classList.add('sel'); }
+}
+function submitSignup(){
+  const fields = {
+    bizName: document.getElementById('signupBizName').value || '-',
+    categories: [...signupSel].map(i=>CATS[i].en).join(', ') || '-',
+    phone: document.getElementById('signupPhone').value || '-',
+    province: document.getElementById('signupProvince').value || '-'
+  };
+  submitToNetlify('happymarket-seller-signup', fields);
+  notifyLine('New Seller Application', fields);
+  showToast(LANG==='th'?'ส่งใบสมัครเรียบร้อย!':LANG==='zh'?'申请已提交！':'Application submitted!');
+  setTimeout(()=>go('home'), 1000);
+}
+
+/* ===== Customer dashboard ===== */
+function renderCustomerRequests(){
+  const dict = T[LANG];
+  const reqs = [
+    {icon:'☀️', title: LANG==='th'?'ติดตั้งโซลาร์ 5kW':LANG==='zh'?'安装5kW太阳能':'5kW Solar Install', status:dict.reqStatusQuoted, offers:3},
+    {icon:'🔋', title: LANG==='th'?'แบตเตอรี่สำรองไฟ':LANG==='zh'?'备用电池':'Backup Battery', status:dict.reqStatusNew, offers:0},
+  ];
+  document.getElementById('customerRequests').innerHTML = reqs.map(r=>`
+    <div class="lead-row">
+      <div class="lead-avatar">${r.icon}</div>
+      <div class="lead-info"><div class="n">${r.title}</div><div class="d">${r.status}${r.offers?` · ${r.offers} ${LANG==='th'?'ข้อเสนอ':LANG==='zh'?'个报价':'offers'}`:''}</div></div>
+      <span class="lead-tag ${r.offers?'tag-hot':'tag-new'}">${r.offers? (LANG==='th'?'มีข้อเสนอ':LANG==='zh'?'有报价':'Offers'):(LANG==='th'?'ใหม่':LANG==='zh'?'新':'New')}</span>
+    </div>`).join('');
+}
+
+/* ===== Seller dashboard ===== */
+function renderSellerDash(){
+  const dict = T[LANG];
+  const kpis = [
+    {ic:'🎯', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)', lbl: LANG==='th'?'Lead วันนี้':LANG==='zh'?'今日线索':'Leads Today', val:'12', delta:'+18%', up:true},
+    {ic:'💰', bg:'linear-gradient(135deg,#30D158,#40C8C0)', lbl: LANG==='th'?'ยอดขายเดือนนี้':LANG==='zh'?'本月销售额':'Sales This Month', val:fmtMoney(486000), delta:'+9%', up:true},
+    {ic:'📈', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)', lbl: LANG==='th'?'อัตราปิดการขาย':LANG==='zh'?'转化率':'Conversion Rate', val:'32%', delta:'-2%', up:false},
+    {ic:'🏦', bg:'linear-gradient(135deg,#5856D6,#5E5CE6)', lbl: LANG==='th'?'ค่าคอมมิชชั่น':LANG==='zh'?'佣金':'Commission', val:fmtMoney(24300), delta:'+5%', up:true},
+  ];
+  document.getElementById('sellerKpi').innerHTML = kpis.map(k=>`
+    <div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="delta ${k.up?'up':'down'}">${k.up?'▲':'▼'} ${k.delta}</div></div>`).join('');
+
+  const days = LANG==='th'?['จ','อ','พ','พฤ','ศ','ส','อา']:LANG==='zh'?['一','二','三','四','五','六','日']:['M','T','W','T','F','S','S'];
+  const vals = [40,65,50,80,55,90,70];
+  document.getElementById('sellerChart').innerHTML = vals.map((v,i)=>`
+    <div class="bar-wrap"><div class="bar" style="height:${v}%;"></div><div class="bar-lbl">${days[i]}</div></div>`).join('');
+
+  const leads = [
+    {icon:'☀️', title: LANG==='th'?'สนใจโซลาร์ 5kW · กรุงเทพฯ':LANG==='zh'?'咨询5kW太阳能 · 曼谷':'Interested: 5kW Solar · Bangkok', tag:'hot', unlocked:false},
+    {icon:'🔋', title: LANG==='th'?'สนใจแบตเตอรี่ 16kWh · ชลบุรี':LANG==='zh'?'咨询16kWh电池 · 春武里':'Interested: 16kWh Battery · Chonburi', tag:'new', unlocked:false},
+    {icon:'🏢', title: LANG==='th'?'โครงการโรงงาน BOQ · ระยอง':LANG==='zh'?'工厂BOQ项目 · 罗勇':'Factory BOQ Project · Rayong', tag:'hot', unlocked:true},
+  ];
+  document.getElementById('sellerLeads').innerHTML = leads.map((l,i)=>`
+    <div class="lead-row">
+      <div class="lead-avatar">${l.icon}</div>
+      <div class="lead-info ${l.unlocked?'':'blur'}"><div class="n">${l.unlocked?(LANG==='th'?'คุณสมชาย · 08X-XXX-1234':'Mr. Somchai · 08X-XXX-1234'):l.title}</div><div class="d">${l.title}</div></div>
+      ${l.unlocked ? `<span class="lead-tag tag-new">✓</span>` : `<button class="unlock-btn" onclick="unlockLead(this)">${LANG==='th'?'ปลดล็อก ฿300':LANG==='zh'?'解锁 ฿300':'Unlock ฿300'}</button>`}
+    </div>`).join('');
+}
+function unlockLead(btn){
+  const row = btn.closest('.lead-row');
+  row.querySelector('.lead-info').classList.remove('blur');
+  btn.outerHTML = `<span class="lead-tag tag-new">✓ ${LANG==='th'?'ปลดล็อกแล้ว':LANG==='zh'?'已解锁':'Unlocked'}</span>`;
+  showToast(LANG==='th'?'ปลดล็อก Lead สำเร็จ':LANG==='zh'?'解锁成功':'Lead unlocked');
+}
+
+/* ============================================================
+   BACK OFFICE (Admin) logic
+============================================================ */
+const BO_MODULES = [
+  {group:'boGroupOverview', items:[
+    {id:'dashboard', ic:'📊', key:'boDashboard'},
+  ]},
+  {group:'boGroupPeople', items:[
+    {id:'users', ic:'👥', key:'boUsers'},
+    {id:'sellers', ic:'🏪', key:'boSellers'},
+  ]},
+  {group:'boGroupBiz', items:[
+    {id:'leads', ic:'🎯', key:'boLeads'},
+    {id:'orders', ic:'📦', key:'boOrders'},
+    {id:'payments', ic:'💳', key:'boPayments'},
+    {id:'commission', ic:'📐', key:'boCommission'},
+    {id:'membership', ic:'⭐', key:'boMembership'},
+    {id:'advertising', ic:'📢', key:'boAdvertising'},
+    {id:'reports', ic:'📈', key:'boReports'},
+  ]},
+  {group:'boGroupSystem', items:[
+    {id:'settings', ic:'⚙️', key:'boSettings'},
+    {id:'translations', ic:'🌐', key:'boTranslations'},
+  ]},
+];
+let currentBoModule = 'dashboard';
+
+function renderBoNav(){
+  const dict = T[LANG];
+  let html = '';
+  BO_MODULES.forEach(g=>{
+    html += `<div class="bo-nav-group"><div class="bo-nav-label">${dict[g.group]}</div>`;
+    g.items.forEach(it=>{
+      html += `<button class="bo-nav-item ${currentBoModule===it.id?'active':''}" onclick="boGo('${it.id}')"><span class="ic">${it.ic}</span>${dict[it.key]}</button>`;
+    });
+    html += `</div>`;
+  });
+  document.getElementById('boNavContainer').innerHTML = html;
+}
+
+function boToggleSidebar(open){
+  document.getElementById('boSidebar').classList.toggle('open', open);
+  document.getElementById('boOverlay').classList.toggle('open', open);
+}
+
+function boGo(id){
+  currentBoModule = id;
+  renderBoNav();
+  boToggleSidebar(false);
+  const dict = T[LANG];
+  const mod = BO_MODULES.flatMap(g=>g.items).find(m=>m.id===id);
+  document.getElementById('boTitle').textContent = dict[mod.key];
+  document.getElementById('boContent').innerHTML = BO_RENDERERS[id]();
+}
+
+function boTable(headers, rows){
+  return `<div class="bo-scroll"><table class="bo-table"><thead><tr>${headers.map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${rows}</tbody></table></div>`;
+}
+
+const BO_RENDERERS = {
+  dashboard: ()=>{
+    const dict = T[LANG];
+    const kpis = [
+      {ic:'💰', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)', lbl: LANG==='th'?'ยอดขายรวม (GMV)':LANG==='zh'?'总交易额 (GMV)':'Total GMV', val:fmtMoney(3820000), delta:'+14%'},
+      {ic:'🏦', bg:'linear-gradient(135deg,#30D158,#40C8C0)', lbl: LANG==='th'?'รายได้แพลตฟอร์ม':LANG==='zh'?'平台收入':'Platform Revenue', val:fmtMoney(214500), delta:'+11%'},
+      {ic:'🏪', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)', lbl: LANG==='th'?'ผู้ขายทั้งหมด':LANG==='zh'?'卖家总数':'Total Sellers', val:'186', delta:'+7'},
+      {ic:'👥', bg:'linear-gradient(135deg,#5856D6,#5E5CE6)', lbl: LANG==='th'?'ผู้ใช้งาน (MAU)':LANG==='zh'?'月活用户':'Users (MAU)', val:'9,420', delta:'+320'},
+    ];
+    const kpiHtml = kpis.map(k=>`<div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div><div class="delta up">▲ ${k.delta}</div></div>`).join('');
+    const rev = [
+      {name: LANG==='th'?'Lead Fee':LANG==='zh'?'线索费':'Lead Fee', v:82000, color:'#FF9F0A'},
+      {name: LANG==='th'?'คอมมิชชั่น':LANG==='zh'?'佣金':'Commission', v:96500, color:'#30D158'},
+      {name: LANG==='th'?'สมาชิก':LANG==='zh'?'会员':'Membership', v:24000, color:'#FF375F'},
+      {name: LANG==='th'?'โฆษณา':LANG==='zh'?'广告':'Advertising', v:12000, color:'#0A84FF'},
+    ];
+    const max = Math.max(...rev.map(r=>r.v));
+    const revHtml = rev.map(r=>`<div style="margin-bottom:12px;"><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span>${r.name}</span><b>${fmtMoney(r.v)}</b></div><div style="height:9px; background:var(--fill); border-radius:99px; overflow:hidden;"><div style="height:100%; width:${(r.v/max*100)}%; background:${r.color}; border-radius:99px;"></div></div></div>`).join('');
+    return `<div class="kpi-grid">${kpiHtml}</div><div class="panel"><h3>${dict.revenueBreakdown}</h3>${revHtml}</div>`;
+  },
+  users: ()=>{
+    const dict = T[LANG];
+    const rows = BO_USERS.map(u=>`<tr><td><span class="bo-avatar">${u.em}</span>${u.name}</td><td>${u.phone}</td><td>${u.joined}</td><td>${statusBadge(u.status)}</td></tr>`).join('');
+    return boTable([dict.colName, dict.colContact, dict.colDate, dict.colStatus], rows);
+  },
+  sellers: ()=>{
+    const dict = T[LANG];
+    const rows = BO_SELLERS.map(s=>`<tr><td><span class="bo-avatar">${s.em}</span>${s.name}</td><td>${s.cat}</td><td>${s.province}</td><td>${s.rating? '⭐ '+s.rating : '—'}</td><td>${statusBadge(s.status)}</td></tr>`).join('');
+    return boTable([dict.colName, dict.colCategory, dict.colProvince, 'Rating', dict.colStatus], rows);
+  },
+  leads: ()=>{
+    const dict = T[LANG];
+    const rows = BO_LEADS.map(l=>`<tr><td>${l.name}</td><td>${l.cat}</td><td>${l.province}</td><td>${fmtMoney(l.value)}</td><td>${statusBadge(l.status)}</td></tr>`).join('');
+    return boTable([dict.colName, dict.colCategory, dict.colProvince, dict.colValue, dict.colStatus], rows);
+  },
+  orders: ()=>{
+    const dict = T[LANG];
+    const rows = BO_ORDERS.map(o=>`<tr><td>${o.id}</td><td>${o.name}</td><td>${fmtMoney(o.value)}</td><td>${o.date}</td><td>${statusBadge(o.status)}</td></tr>`).join('');
+    return boTable(['ID', dict.colName, dict.colValue, dict.colDate, dict.colStatus], rows);
+  },
+  payments: ()=>{
+    const dict = T[LANG];
+    const wallets = [
+      {lbl: LANG==='th'?'ยอดคงเหลือรวมในระบบ':LANG==='zh'?'系统总余额':'Total Wallet Balance', val: fmtMoney(1240500), ic:'💳', bg:'linear-gradient(135deg,#0A84FF,#5E5CE6)'},
+      {lbl: LANG==='th'?'เครดิต Lead คงเหลือ':LANG==='zh'?'线索余额':'Lead Credit Balance', val: fmtMoney(86000), ic:'🎯', bg:'linear-gradient(135deg,#FF9F0A,#FF375F)'},
+      {lbl: LANG==='th'?'รอถอนเงิน':LANG==='zh'?'待提现':'Pending Withdrawals', val: fmtMoney(52000), ic:'🏦', bg:'linear-gradient(135deg,#30D158,#40C8C0)'},
+    ];
+    const kpiHtml = wallets.map(k=>`<div class="kpi-card"><div class="kpi-icon" style="background:${k.bg};">${k.ic}</div><div class="lbl">${k.lbl}</div><div class="val">${k.val}</div></div>`).join('');
+    const tx = [
+      {name:'HAPPYSOLAR สมุทรสาคร', type: LANG==='th'?'ถอนเงิน':LANG==='zh'?'提现':'Withdrawal', value:-25000, status:'active'},
+      {name:'GreenVolt Battery Co.', type: LANG==='th'?'รับค่าคอมมิชชั่น':LANG==='zh'?'佣金收入':'Commission Received', value:6500, status:'active'},
+      {name:'ช่างเอก การไฟฟ้า', type: LANG==='th'?'ซื้อ Lead Credit':LANG==='zh'?'购买线索额度':'Lead Credit Purchase', value:-1500, status:'pending'},
+    ];
+    const rows = tx.map(t=>`<tr><td>${t.name}</td><td>${t.type}</td><td style="color:${t.value<0?'var(--sys-pink)':'var(--sys-green)'}; font-weight:700;">${t.value<0?'-':'+'}${fmtMoney(Math.abs(t.value))}</td><td>${statusBadge(t.status)}</td></tr>`).join('');
+    return `<div class="kpi-grid" style="grid-template-columns:repeat(3,1fr);">${kpiHtml}</div>` + boTable([dict.colName, dict.colCategory, dict.colValue, dict.colStatus], rows);
+  },
+  commission: ()=>{
+    const dict = T[LANG];
+    const cats = [
+      {name: LANG==='th'?'พลังงานแสงอาทิตย์':LANG==='zh'?'太阳能':'Solar & Energy', rate:5},
+      {name: LANG==='th'?'แบตเตอรี่':LANG==='zh'?'电池':'Battery', rate:4},
+      {name: LANG==='th'?'บ้านและที่ดิน':LANG==='zh'?'房产':'Home & Land', rate:2},
+      {name: LANG==='th'?'รถยนต์':LANG==='zh'?'汽车':'Auto', rate:3},
+      {name: LANG==='th'?'ช่างและบริการ':LANG==='zh'?'服务':'Services', rate:10},
+    ];
+    return `<div class="panel"><h3>${dict.boCommission}</h3>` + cats.map(c=>`
+      <div class="settings-row"><div class="s-lbl">${c.name}</div><input class="mini-input" value="${c.rate}%"></div>`).join('') +
+      `<button class="pill-btn" style="margin-top:14px;" onclick="showToast(T[LANG].savedToast)">${dict.saveSettings}</button></div>`;
+  },
+  membership: ()=>{
+    const dict = T[LANG];
+    const plans = [
+      {name:dict.planFree, price:'฿0', desc:dict.planFreeDesc},
+      {name:dict.planBasic, price:'฿299/mo', desc:dict.planBasicDesc},
+      {name:dict.planPro, price:'฿990/mo', desc:dict.planProDesc},
+      {name:dict.planBusiness, price:'฿2,990/mo', desc:dict.planBusinessDesc},
+    ];
+    return `<div class="membership-grid">` + plans.map(p=>`
+      <div class="mp-card"><div class="mp-name">${p.name}</div><div class="mp-price">${p.price}</div><ul>${p.desc.map(d=>`<li>${d}</li>`).join('')}</ul></div>`).join('') + `</div>`;
+  },
+  advertising: ()=>{
+    const dict = T[LANG];
+    const rows = BO_ADS.map(a=>`<tr><td>${a.name}</td><td>${fmtMoney(a.spend)}</td><td>${a.clicks.toLocaleString()}</td><td>${statusBadge(a.status)}</td></tr>`).join('');
+    return boTable([dict.colName, LANG==='th'?'งบที่ใช้':LANG==='zh'?'花费':'Spend', 'Clicks', dict.colStatus], rows);
+  },
+  reports: ()=>{
+    const dict = T[LANG];
+    const days = LANG==='th'?['จ','อ','พ','พฤ','ศ','ส','อา']:LANG==='zh'?['一','二','三','四','五','六','日']:['M','T','W','T','F','S','S'];
+    const vals = [55,70,60,85,65,95,80];
+    const bars = vals.map((v,i)=>`<div class="bar-wrap"><div class="bar" style="height:${v}%;"></div><div class="bar-lbl">${days[i]}</div></div>`).join('');
+    const funnel = [
+      {lbl: LANG==='th'?'ผู้เข้าชม':LANG==='zh'?'访客':'Visitors', v:100},
+      {lbl: LANG==='th'?'ค้นหา':LANG==='zh'?'搜索':'Search', v:64},
+      {lbl: LANG==='th'?'สร้างคำขอ':LANG==='zh'?'创建请求':'Request Created', v:28},
+      {lbl: LANG==='th'?'Lead':LANG==='zh'?'线索':'Lead', v:19},
+      {lbl: LANG==='th'?'ปิดการขาย':LANG==='zh'?'成交':'Order', v:8},
+    ];
+    const funnelHtml = funnel.map(f=>`<div style="margin-bottom:10px;"><div style="display:flex; justify-content:space-between; font-size:12.5px; margin-bottom:5px;"><span>${f.lbl}</span><b>${f.v}%</b></div><div style="height:9px; background:var(--fill); border-radius:99px;"><div style="height:100%; width:${f.v}%; background:var(--accent-grad); border-radius:99px;"></div></div></div>`).join('');
+    return `<div class="panel"><h3>${LANG==='th'?'รายได้ 7 วันล่าสุด':LANG==='zh'?'过去7天收入':'Revenue - Last 7 Days'}</h3><div class="bar-chart">${bars}</div></div>
+    <div class="panel"><h3>${LANG==='th'?'Conversion Funnel':LANG==='zh'?'转化漏斗':'Conversion Funnel'}</h3>${funnelHtml}</div>`;
+  },
+  settings: ()=>{
+    const dict = T[LANG];
+    return `<div class="panel">
+      <div class="settings-row"><div><div class="s-lbl">${dict.setLeadPrice}</div><div class="s-sub">${dict.setLeadPriceSub}</div></div><input class="mini-input" value="฿300"></div>
+      <div class="settings-row"><div><div class="s-lbl">${dict.setLeadPriceHQ}</div><div class="s-sub">${dict.setLeadPriceHQSub}</div></div><input class="mini-input" value="฿1,000"></div>
+      <div class="settings-row"><div><div class="s-lbl">${dict.setCommission}</div><div class="s-sub">${dict.setCommissionSub}</div></div><input class="mini-input" value="5%"></div>
+      <div class="settings-row"><div><div class="s-lbl">${dict.setReferral}</div><div class="s-sub">${dict.setReferralSub}</div></div><input class="mini-input" value="฿100"></div>
+      <div class="settings-row"><div><div class="s-lbl">${dict.setAutoVerify}</div><div class="s-sub">${dict.setAutoVerifySub}</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+      <div class="settings-row"><div><div class="s-lbl">${dict.setMaintenance}</div><div class="s-sub">${dict.setMaintenanceSub}</div></div><div class="toggle" onclick="this.classList.toggle('on')"></div></div>
+      <button class="pill-btn" style="margin-top:16px;" onclick="showToast(T[LANG].savedToast)">${dict.saveSettings}</button>
+    </div>`;
+  },
+  translations: ()=>{
+    const rows = ['heroTitle','searchBtn','becomeSeller','navMarket'].map(k=>`
+      <tr><td style="font-family:monospace; font-size:11.5px; color:var(--label-2);">${k}</td><td>${T.th[k]}</td><td>${T.en[k]}</td><td>${T.zh[k]}</td></tr>`).join('');
+    return boTable(['Key','TH','EN','ZH'], rows) + `<p style="font-size:11.5px; color:var(--label-2); margin-top:10px; font-weight:500;">${LANG==='th'?'ตัวอย่างข้อความในระบบ':LANG==='zh'?'系统文本示例':'Sample of system strings'}</p>`;
+  },
+};
+
+function applyI18nText(){
+  const dict = T[LANG];
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-placeholder');
+    if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === LANG);
+  });
+}
+
+function render(){
+  applyI18nText();
+  renderCats();
+  renderDeals();
+  renderVerified();
+  renderHow();
+  renderMarket();
+  renderAiStep();
+  renderSignupChips();
+  renderCustomerRequests();
+  renderSellerDash();
+  renderBoNav();
+  boGo(currentBoModule);
+}
+
+applyTheme();
+document.body.classList.toggle('lang-zh', LANG==='zh');
+render();
+</script>
+</body>
+</html>
